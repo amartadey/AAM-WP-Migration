@@ -1,0 +1,7 @@
+# Paths below are stripped from the distributed plugin zip.
+# `git archive` (used by .github/workflows/release.yml) honours export-ignore.
+/.github                              export-ignore
+/.gitattributes                       export-ignore
+/remote-uploader/test-url-guard.php   export-ignore
+/remote-uploader/RELEASE_GUIDE.md     export-ignore
+/remote-uploader/.gitignore           export-ignore
