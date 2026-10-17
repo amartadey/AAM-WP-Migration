@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/google-cloud-storage-extension" target="_blank">Google Cloud</a>
+Google Cloud

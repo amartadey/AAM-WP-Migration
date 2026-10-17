@@ -57,6 +57,7 @@ class Ai1wm_GitHub_Updater {
 
 		$data = json_decode( wp_remote_retrieve_body( $response ), true );
 		if ( empty( $data['tag_name'] ) ) {
+			set_transient( self::CACHE_KEY, array(), HOUR_IN_SECONDS ); // back off on malformed response
 			return false;
 		}
 
@@ -147,7 +148,8 @@ class Ai1wm_GitHub_Updater {
 		global $wp_filesystem;
 		$target = trailingslashit( $remote_source ) . dirname( AI1WM_PLUGIN_BASENAME );
 
-		if ( $source === $target ) {
+		// $source arrives with a trailing slash; compare without it or move() deletes the package.
+		if ( untrailingslashit( $source ) === $target ) {
 			return $source;
 		}
 

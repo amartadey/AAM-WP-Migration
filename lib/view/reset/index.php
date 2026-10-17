@@ -28,8 +28,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<img src="<?php echo wp_make_link_relative( AI1WM_URL ); ?>/lib/view/assets/img/reset/star.png?v=<?php echo AI1WM_VERSION; ?>" alt="<?php _e( 'Star', AI1WM_PLUGIN_NAME ); ?>" />
 			<?php _e( 'Experience Full Functionality with Premium!', AI1WM_PLUGIN_NAME ); ?>
 		</h1>
-		<p><?php _e( 'Please note, the features displayed below are part of an image showcasing the potential of Reset Hub in its Premium version. To activate and enjoy these advanced features, <a href="https://webgraphicshub.com/products/unlimited-extension" title="Upgrade to Premium" target="_blank">upgrade to Premium now</a>! Elevate your website management experience with these exclusive functionalities and priority support.', AI1WM_PLUGIN_NAME ); ?></p>
+		<p><?php _e( 'Please note, the features displayed below are part of an image showcasing the potential of Reset Hub in its Premium version. To activate and enjoy these advanced features, upgrade to Premium now! Elevate your website management experience with these exclusive functionalities and priority support.', AI1WM_PLUGIN_NAME ); ?></p>
 
-		<a href="https://webgraphicshub.com/products/unlimited-extension" target="_blank" title="<?php _e( 'Upgrade to Premium ', AI1WM_PLUGIN_NAME ); ?>"><img src="<?php echo wp_make_link_relative( AI1WM_URL ); ?>/lib/view/assets/img/reset/screen.jpg?v=<?php echo AI1WM_VERSION; ?>" alt="<?php _e( 'Reset Hub Demo', AI1WM_PLUGIN_NAME ); ?>" /></a>
+		<img src="<?php echo wp_make_link_relative( AI1WM_URL ); ?>/lib/view/assets/img/reset/screen.jpg?v=<?php echo AI1WM_VERSION; ?>" alt="<?php _e( 'Reset Hub Demo', AI1WM_PLUGIN_NAME ); ?>" />
 	</div>
 </div>

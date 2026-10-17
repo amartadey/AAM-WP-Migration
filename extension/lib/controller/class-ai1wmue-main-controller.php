@@ -46,9 +46,6 @@ class Ai1wmue_Main_Controller extends Ai1wmve_Main_Controller {
 	 * @return void
 	 */
 	protected function activate_actions() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_export_scripts_and_styles' ), 20 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_import_scripts_and_styles' ), 20 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_backups_scripts_and_styles' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_settings_scripts_and_styles' ), 20 );
 	}
 
@@ -116,8 +113,7 @@ class Ai1wmue_Main_Controller extends Ai1wmve_Main_Controller {
 			<p>
 				<?php
 				_e(
-					'Unlimited Extension requires <a href="https://wordpress.org/plugins/all-in-one-wp-migration/" target="_blank">All-in-One WP Migration plugin</a> to be activated. ' .
-					'<a href="https://webgraphicshub.com/support/knowledgebase/install-instructions-for-unlimited-extension/" target="_blank">Unlimited Extension install instructions</a>',
+					'Unlimited Extension requires <a href="https://wordpress.org/plugins/all-in-one-wp-migration/" target="_blank">All-in-One WP Migration plugin</a> to be activated.',
 					AI1WMUE_PLUGIN_NAME
 				);
 				?>
@@ -127,55 +123,13 @@ class Ai1wmue_Main_Controller extends Ai1wmve_Main_Controller {
 	}
 
 	/**
-	 * Enqueue scripts and styles for Import Controller
-	 *
-	 * @param  string $hook Hook suffix
-	 * @return void
-	 */
-	public function enqueue_import_scripts_and_styles( $hook ) {
-		if ( stripos( 'all-in-one-wp-migration_page_ai1wm_import', $hook ) === false ) {
-			return;
-		}
-
-		add_action( 'admin_print_scripts', array( $this, 'google_tag_manager' ) );
-	}
-
-	/**
-	 * Enqueue scripts and styles for Backup Controller
-	 *
-	 * @param  string $hook Hook suffix
-	 * @return void
-	 */
-	public function enqueue_backups_scripts_and_styles( $hook ) {
-		if ( stripos( 'all-in-one-wp-migration_page_ai1wm_backups', $hook ) === false ) {
-			return;
-		}
-
-		add_action( 'admin_print_scripts', array( $this, 'google_tag_manager' ) );
-	}
-
-	/**
-	 * Enqueue scripts and styles for Export Controller
-	 *
-	 * @param  string $hook Hook suffix
-	 * @return void
-	 */
-	public function enqueue_export_scripts_and_styles( $hook ) {
-		if ( stripos( 'toplevel_page_ai1wm_export', $hook ) === false ) {
-			return;
-		}
-
-		add_action( 'admin_print_scripts', array( $this, 'google_tag_manager' ) );
-	}
-
-	/**
 	 * Enqueue scripts and styles for Settings Controller
 	 *
 	 * @param  string $hook Hook suffix
 	 * @return void
 	 */
 	public function enqueue_settings_scripts_and_styles( $hook ) {
-		if ( stripos( 'all-in-one-wp-migration_page_ai1wmue_settings', $hook ) === false ) {
+		if ( stripos( 'aam-wp-migration_page_ai1wmue_settings', $hook ) === false ) {
 			return;
 		}
 
@@ -197,17 +151,6 @@ class Ai1wmue_Main_Controller extends Ai1wmve_Main_Controller {
 			'ai1wmue_settings',
 			Ai1wm_Template::asset_link( 'javascript/settings.min.js', 'AI1WMUE' ),
 			array( 'ai1wm_settings' )
-		);
-
-		wp_localize_script(
-			'ai1wmue_settings',
-			'ai1wm_feedback',
-			array(
-				'ajax'       => array(
-					'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_feedback' ) ),
-				),
-				'secret_key' => get_option( AI1WM_SECRET_KEY ),
-			)
 		);
 
 		wp_localize_script(
@@ -238,7 +181,6 @@ class Ai1wmue_Main_Controller extends Ai1wmve_Main_Controller {
 			)
 		);
 
-		add_action( 'admin_print_scripts', array( $this, 'google_tag_manager' ) );
 	}
 
 	/**
@@ -258,19 +200,6 @@ class Ai1wmue_Main_Controller extends Ai1wmve_Main_Controller {
 	 * @return array
 	 */
 	public function plugin_row_meta( $links, $file ) {
-		if ( $file === AI1WMUE_PLUGIN_BASENAME ) {
-			$links[] = __( '<a href="https://webgraphicshub.com/support/knowledgebase/unlimited-extension-user-guide/" target="_blank">User Guide</a>', AI1WMUE_PLUGIN_NAME );
-			$links[] = __( '<a href="https://webgraphicshub.com/contact-support" target="_blank">Contact Support</a>', AI1WMUE_PLUGIN_NAME );
-		}
-
 		return $links;
-	}
-
-	public function google_tag_manager() {
-		Ai1wm_Template::render(
-			'common/google-tag-manager',
-			array(),
-			AI1WMUE_TEMPLATES_PATH
-		);
 	}
 }

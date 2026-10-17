@@ -1,101 +1,31 @@
-﻿=== Aam WP Migration ===
+=== Aam WP Migration ===
 Contributors: amartadey
-Tags: backup, transfer, copy, move, clone
+Tags: backup, migration, transfer, clone
 Requires at least: 3.3
 Tested up to: 6.7
 Requires PHP: 5.3
 Stable tag: 7.87
-License: GPLv2 or later
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Backup, transfer, copy, and move a site with 1-click. Quick, easy, and reliable.
+Export or import a whole WordPress site as one .wpress file, with no upload size limit.
 
 == Description ==
-Introduced in 2013 and used by over 60 million websites, Aam WP Migration is verifiably one of WordPress' most trusted and utilized plugins for moving websites with absolute ease.
+Aam WP Migration bundles your database, media, plugins and themes into a single .wpress file and restores it on another site.
 
-Intently built with the non-technical user in mind, Aam WP Migration comes loaded with newbie-friendly functions that allow you to migrate your WordPress website with little to no technical knowledge or experience.
+* No import size limit on single-site installs (Unlimited features built in).
+* Backups page with restore, retention settings, schedules and Reset Hub (single-site only).
+* Remote Upload: pull a .wpress backup from a public URL straight into the backups folder.
+* Updates come from GitHub releases, not wordpress.org.
 
-Ready to migrate your website? It's fast and easy as 1, 2, 3:
+On WordPress Multisite only the core export/import is available.
 
-1. Install Aam WP Migration plugin.
-2. Hit the export button to bundle your database, media files, plugins, and themes into one tidy file.
-3. Unpack the file at the new location with an easy-to-use "drag and drop" feature in the WordPress dashboard of your new website.
-
-Follow these three simple steps, and your site will be live at its new location with minimal stress and **zero downtime**!
-
-One feature that makes Aam WP Migration widely loved (to the tune of over 6,000 5-star user reviews) is that the technical requirements for installing the plugin are simple.
-
-If you have WordPress version between 3.3 and 6.6.1 and PHP version between 5.3 and 8.4, you are good to go. Aam WP Migration also supports all versions of MySQL, MariaDB and SQLite.
-
-**Features Spotlight:**
-
-* Supports custom uploads, plugins, theme folders, and more.
-* Available in over 50 language translations - including Japanese.
-* Accessible for individuals with disabilities (WCAG 2.1 AA Level compliant)
-* No limitations on host or operating system.
-* Supports a vast range of hosting providers -- [click here for a full list of supported providers.](https://webgraphicshub.com/support/knowledgebase/supported-hosting-providers/)
-* A long list of [premium extensions](https://webgraphicshub.com/products) that gives you the power to do more.
-* Mobile device compatible.
-* Intelligent and flawless auto-replacement of website url during import.
-* Full product support.
-* Browse WPRESS files online with [Traktor Web](https://webgraphicshub.com)
-* Extract WPRESS files on your computer with [Traktor Desktop](https://webgraphicshub.com)
-* New in v7.82: Integration with WordPress Playground, enabling easy migration between SQLite and MySQL.
-* And lots more!
-
-Here are other reasons to use Aam WP Migration ...
-
-**Trusted by the Government and Big Corporations:**
-
-Many enterprise customers, government organizations, and universities use, love, and trust Aam WP Migration. Here are some: Boeing, NASA, VW, IBM, Harvard University, Stanford University, Lego, P&G, Automattic, State of California, State of Hawaii.
-This broad adoption and usage of Aam WP Migration demonstrate how **safe, reliable and adaptable** the plugin is for just about any website migration need.
-
-**Update Frequency:**
-Our team is dedicated to keeping Aam WP Migration up-to-date and secure. We release updates every two weeks or at least once a month, ensuring compatibility with the latest WordPress versions, including beta releases. Our proactive testing and feedback to the WordPress core team help in preemptively addressing any potential issues, providing our users with a reliable and forward-compatible migration and backup solution.
-
-**Full Compatibility and Support:**
-
-Aam WP Migration has been extensively tested and confirmed to be compatible with most WordPress plugins and themes.
-This means you don't get to experience cross-plugin compatibility issues that can slow down, bug, or break down your WordPress website when you install and use Aam WP Migration.
-As a matter of fact, Aam WP Migration has partnered with multiple theme/plugin vendors to distribute their themes/plugins with us as a single, easy to use, easy to install package.
-These vendors trust us and our plugin to provide their customers with reliable product delivery, support, migrations, and backups.
-
-**Cloud Storage Supported:**
-
-Aam WP Migration supports and syncs seamlessly with top cloud storage services.
-The plugin comes preinstalled on all Bitnami WordPress sites running on AWS, Google Compute Cloud, and Microsoft Azure.
-
-**Case Studies:**
-
-* Small Business Growth: A small online retailer was able to seamlessly migrate to a more robust hosting solution to handle increasing traffic during peak shopping seasons, ensuring smooth customer experiences without downtime.
-* Educational Institutions: A prominent university utilized Aam WP Migration to consolidate multiple departmental sites into a single, unified WordPress network, simplifying management and enhancing site security.
-* Government Reliability: Following a directive to improve digital accessibility, a government agency used our plugin to migrate their content to a new, compliant platform without impacting public access to critical information.
-
-= Contact us =
-* [Report a security vulnerability](https://patchstack.com/database/vdp/aam-wp-migration)
-* [Get free help from us here](https://webgraphicshub.com/help)
-* [Report a bug or request a feature](https://webgraphicshub.com/help)
-* [Find out more about us](https://webgraphicshub.com)
-
-[youtube http://www.youtube.com/watch?v=BpWxCeUWBOk]
-
-[youtube http://www.youtube.com/watch?v=mRp7qTFYKgs]
+Source, issues and downloads: https://github.com/amartadey/AAM-WP-Migration
 
 == Installation ==
-1. Aam WP Migration can be installed directly through your WordPress Plugins dashboard.
-1. Click "Add New" and Search for "Aam WP Migration"
-1. Install and Activate
-
-Alternatively, you can download the plugin using the download button on this page and then upload the aam-wp-migration folder to the /wp-content/plugins/ directory then activate throught the Plugins dashboard in WordPress
-
-== Screenshots ==
-1. Mobile Export page
-2. Mobile Import page
-3. Plugin Menu
-
-== Privacy Policy ==
-Aam WP Migration is designed to fully respect and protect the personal information of its users. It asks for your consent to collect the user's email address when filling the plugin's contact form.
-Aam WP Migration is in full compliance with General Data Protection Regulation (GDPR).
-See our [GDPR Compliant Privacy Policy here](https://www.iubenda.com/privacy-policy/946881).
+1. Download aam-wp-migration.zip from https://github.com/amartadey/AAM-WP-Migration/releases/latest/download/aam-wp-migration.zip
+2. Plugins > Add New > Upload Plugin, choose the zip, then Install and Activate.
+3. Deactivate the original All-in-One WP Migration first if it is installed. Both cannot run at the same time.
 
 == Changelog ==
 = 7.87 =

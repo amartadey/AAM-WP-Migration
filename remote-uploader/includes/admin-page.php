@@ -8,24 +8,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Multi-signal AI1WM detection — checks constants, class names, and functions
- * to handle all AI1WM versions (free, unlimited, older builds).
- */
-function rfu_ai1wm_detect_ai1wm() {
-    if (defined('AI1WM_PLUGIN_BASENAME') || defined('AI1WM_BACKUPS_NAME')) {
-        return true;
-    }
-    foreach (array('Ai1wm_Main', 'Ai1wm_Main_Controller', 'Ai1wm') as $cls) {
-        if (class_exists($cls, false)) {
-            return true;
-        }
-    }
-    return function_exists('ai1wm_setup');
-}
-
 // Server environment checks
-$backup_dir   = WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'ai1wm-backups';
+$backup_dir   = AI1WM_BACKUPS_PATH;
 $dir_exists   = file_exists($backup_dir);
 $dir_writable = $dir_exists && is_writable($backup_dir);
 
@@ -35,15 +19,6 @@ $dir_writable = $dir_exists && is_writable($backup_dir);
 $free_bytes      = ($dir_exists && function_exists('disk_free_space')) ? @disk_free_space($backup_dir) : false;
 $total_bytes     = ($dir_exists && function_exists('disk_total_space')) ? @disk_total_space($backup_dir) : false;
 $curl_enabled    = function_exists('curl_init');
-$ai1wm_active    = rfu_ai1wm_detect_ai1wm();
-
-// Format helpers
-function rfu_fmt_bytes($bytes, $dec = 1) {
-    if ($bytes <= 0) return '0 B';
-    $unit = ['B','KB','MB','GB','TB'];
-    $i = (int) floor(log($bytes, 1024));
-    return round($bytes / pow(1024, $i), $dec) . ' ' . $unit[$i];
-}
 ?>
 
 <div class="wrap rfu-ai1wm-wrap">
@@ -69,7 +44,7 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
         <div class="rfu-ai1wm-hero">
             <div class="rfu-ai1wm-hero-icon">☁️</div>
             <div class="rfu-ai1wm-hero-text">
-                <h2><?php _e('Remote File Uploader for AI1WM', 'all-in-one-wp-migration'); ?></h2>
+                <h2><?php _e('Remote File Uploader', 'all-in-one-wp-migration'); ?></h2>
                 <p><?php _e('Stream a backup file from any public URL directly to this server — no manual downloading needed.', 'all-in-one-wp-migration'); ?></p>
             </div>
         </div>
@@ -88,14 +63,10 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
                 else echo 'Dir Not Created Yet';
                 ?>
             </span>
-            <span class="rfu-ai1wm-status-item <?php echo $ai1wm_active ? 'status-ok' : 'status-warn'; ?>">
-                <span class="rfu-ai1wm-status-dot"></span>
-                <?php echo $ai1wm_active ? 'AI1WM Active' : 'AI1WM Not Detected'; ?>
-            </span>
             <?php if ($free_bytes !== false): ?>
             <span class="rfu-ai1wm-status-item status-warn" title="<?php _e('Server disk space — NOT your cPanel quota', 'all-in-one-wp-migration'); ?>">
                 <span class="rfu-ai1wm-status-dot"></span>
-                <?php echo esc_html('Server Free: ' . rfu_fmt_bytes($free_bytes)); ?> &nbsp;<span style="opacity:.7;font-size:11px;">(server disk)</span>
+                <?php echo esc_html('Server Free: ' . size_format($free_bytes)); ?> &nbsp;<span style="opacity:.7;font-size:11px;">(server disk)</span>
             </span>
             <?php endif; ?>
         </div>
@@ -104,7 +75,7 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
         <div class="rfu-ai1wm-card">
             <div class="rfu-ai1wm-card-header">
                 <span class="header-icon">⬆️</span>
-                <h2><?php _e('Upload Remote File to AI1WM Backups', 'all-in-one-wp-migration'); ?></h2>
+                <h2><?php _e('Upload Remote File to Backups', 'all-in-one-wp-migration'); ?></h2>
             </div>
             <div class="rfu-ai1wm-card-body">
                 <form id="rfu-ai1wm-form" method="post">
@@ -127,7 +98,7 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
                                     />
                                     <div id="rfu-url-hint" class="rfu-ai1wm-url-hint" style="display:none;"></div>
                                     <p class="description">
-                                        <?php _e('Accepted: .wpress, .zip — URL must be publicly accessible (no login required).', 'all-in-one-wp-migration'); ?>
+                                        <?php _e('Accepted: .wpress only — URL must be publicly accessible (no login required).', 'all-in-one-wp-migration'); ?>
                                     </p>
                                 </td>
                             </tr>
@@ -184,7 +155,7 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
                             <li><?php _e('Copy the direct download URL of your backup file.', 'all-in-one-wp-migration'); ?></li>
                             <li><?php _e('Paste it in the field above and click <strong>Start Upload</strong>.', 'all-in-one-wp-migration'); ?></li>
                             <li><?php _e('The file streams server-side — you do not need to keep this tab open, but monitoring is recommended.', 'all-in-one-wp-migration'); ?></li>
-                            <li><?php _e('After completion, open All-in-One WP Migration → Backups to restore.', 'all-in-one-wp-migration'); ?></li>
+                            <li><?php _e('After completion, open Aam WP Migration → Backups to restore.', 'all-in-one-wp-migration'); ?></li>
                         </ol>
 
                         <h3><?php _e('Requirements', 'all-in-one-wp-migration'); ?></h3>
@@ -219,9 +190,9 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
                             <tr>
                                 <td><?php _e('Server Disk Free', 'all-in-one-wp-migration'); ?></td>
                                 <td>
-                                    <?php echo esc_html(rfu_fmt_bytes($free_bytes)); ?>
+                                    <?php echo esc_html(size_format($free_bytes)); ?>
                                     <?php if ($total_bytes): ?>
-                                        <span style="color:#9ca3af;"> / <?php echo esc_html(rfu_fmt_bytes($total_bytes)); ?></span>
+                                        <span style="color:#9ca3af;"> / <?php echo esc_html(size_format($total_bytes)); ?></span>
                                     <?php endif; ?>
                                     <div class="rfu-disk-note">
                                         ⚠️ <?php _e('This is the <strong>server partition</strong> space — not your cPanel hosting quota. Check your cPanel → Disk Usage for your actual available quota.', 'all-in-one-wp-migration'); ?>
@@ -230,15 +201,9 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
                             </tr>
                             <?php endif; ?>
                             <tr>
-                                <td><?php _e('AI1WM Status', 'all-in-one-wp-migration'); ?></td>
+                                <td><?php _e('Backups', 'all-in-one-wp-migration'); ?></td>
                                 <td>
-                                    <?php if ($ai1wm_active): ?>
-                                        <span style="color:#16a34a;font-weight:600;">✓ <?php _e('Active', 'all-in-one-wp-migration'); ?></span>
-                                        &nbsp;—&nbsp;
-                                        <a href="<?php echo esc_url(admin_url('admin.php?page=ai1wm_export')); ?>"><?php _e('Open AI1WM →', 'all-in-one-wp-migration'); ?></a>
-                                    <?php else: ?>
-                                        <span style="color:#d97706;font-weight:600;">⚠ <?php _e('Not detected', 'all-in-one-wp-migration'); ?></span>
-                                    <?php endif; ?>
+                                    <a href="<?php echo esc_url(Remote_File_Uploader_AI1WM::restore_url()); ?>"><?php _e('Open Backups →', 'all-in-one-wp-migration'); ?></a>
                                 </td>
                             </tr>
                             <tr>
@@ -256,7 +221,7 @@ function rfu_fmt_bytes($bytes, $dec = 1) {
 
                         <h3><?php _e('Supported Files', 'all-in-one-wp-migration'); ?></h3>
                         <p style="font-size:13px;color:#4b5563;">
-                            <?php _e('Primarily designed for <code>.wpress</code> (AI1WM format) and <code>.zip</code> files. Any file type is technically accepted.', 'all-in-one-wp-migration'); ?>
+                            <?php _e('Only <code>.wpress</code> backups are accepted — that is the only format the Backups page can restore.', 'all-in-one-wp-migration'); ?>
                         </p>
                     </div>
                 </div>

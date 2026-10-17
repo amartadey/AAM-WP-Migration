@@ -55,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li class="ai1wm-encrypt-backups-container-disabled">
 					<input type="checkbox" id="ai1wm-encrypt-backups" name="options[encrypt_backups]" disabled />
 					<?php _e( 'Password-protect and encrypt backups', AI1WM_PLUGIN_NAME ); ?>
-					<a href="https://webgraphicshub.com/support/knowledgebase/unable-to-encrypt-and-decrypt-backups/" target="_blank"><span class="ai1wm-icon-help"></span></a>
+				
 				</li>
 			<?php endif; ?>
 			<li>

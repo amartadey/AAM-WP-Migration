@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/ftp-extension" target="_blank">FTP</a>
+FTP

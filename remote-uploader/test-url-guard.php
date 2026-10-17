@@ -21,13 +21,12 @@ class WP_Error {
 
 require __DIR__ . '/class-remote-file-uploader.php';
 
-$method = new ReflectionMethod( 'Remote_File_Uploader_AI1WM', 'validate_source_url' );
-$method->setAccessible( true );
 $obj = ( new ReflectionClass( 'Remote_File_Uploader_AI1WM' ) )->newInstanceWithoutConstructor();
 
-function check( $method, $obj, $url, $should_pass, $label ) {
-	$result = $method->invoke( $obj, $url );
-	$passed = ( $result === true );
+function check( $obj, $method_name, $url, $should_pass, $label ) {
+	$method = new ReflectionMethod( 'Remote_File_Uploader_AI1WM', $method_name );
+	$method->setAccessible( true );
+	$passed = ! is_wp_error( $method->invoke( $obj, $url ) );
 	if ( $passed !== $should_pass ) {
 		fwrite( STDERR, sprintf( "FAIL: %s (url=%s) expected %s\n", $label, $url, $should_pass ? 'pass' : 'reject' ) );
 		exit( 1 );
@@ -35,17 +34,18 @@ function check( $method, $obj, $url, $should_pass, $label ) {
 	echo sprintf( "ok: %s\n", $label );
 }
 
-// Reject
-check( $method, $obj, 'file:///etc/passwd',                 false, 'file:// scheme' );
-check( $method, $obj, 'gopher://example.com/x.wpress',      false, 'gopher:// scheme' );
-check( $method, $obj, 'http://127.0.0.1/backup.wpress',     false, 'loopback IP' );
-check( $method, $obj, 'http://169.254.169.254/x.wpress',    false, 'link-local metadata IP' );
-check( $method, $obj, 'http://10.0.0.5/backup.wpress',      false, 'private 10/8 IP' );
-check( $method, $obj, 'https://example.com/shell.php',      false, 'disallowed .php extension' );
-check( $method, $obj, 'https://example.com/no-extension',   false, 'missing extension' );
+// Host guard (runs on every redirect hop)
+check( $obj, 'validate_source_url', 'file:///etc/passwd',              false, 'file:// scheme' );
+check( $obj, 'validate_source_url', 'gopher://example.com/x.wpress',   false, 'gopher:// scheme' );
+check( $obj, 'validate_source_url', 'http://127.0.0.1/backup.wpress',  false, 'loopback IP' );
+check( $obj, 'validate_source_url', 'http://169.254.169.254/x.wpress', false, 'link-local metadata IP' );
+check( $obj, 'validate_source_url', 'http://10.0.0.5/backup.wpress',   false, 'private 10/8 IP' );
+check( $obj, 'validate_source_url', 'http://93.184.215.14/a',          true,  'public IP, any path (redirect hop)' );
 
-// Pass (public host, allowed extension)
-check( $method, $obj, 'https://example.com/backup.wpress',  true,  'public host + .wpress' );
-check( $method, $obj, 'https://example.com/path/site.zip',  true,  'public host + .zip' );
+// Extension guard (original URL only)
+check( $obj, 'validate_extension', 'https://example.com/shell.php',     false, 'disallowed .php extension' );
+check( $obj, 'validate_extension', 'https://example.com/site.zip',      false, '.zip rejected' );
+check( $obj, 'validate_extension', 'https://example.com/no-extension',  false, 'missing extension' );
+check( $obj, 'validate_extension', 'https://example.com/backup.WPRESS', true,  '.wpress (case-insensitive)' );
 
 echo "\nall checks passed\n";

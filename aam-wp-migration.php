@@ -31,6 +31,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Kangaroos cannot jump here' );
 }
 
+// Same class names as the original All-in-One WP Migration: loading both is a fatal error
+$ai1wm_original = 'all-in-one-wp-migration/all-in-one-wp-migration.php';
+if ( defined( 'AI1WM_PLUGIN_NAME' )
+	|| in_array( $ai1wm_original, (array) get_option( 'active_plugins', array() ), true )
+	|| ( is_multisite() && array_key_exists( $ai1wm_original, (array) get_site_option( 'active_sitewide_plugins', array() ) ) ) ) {
+	add_action( is_multisite() ? 'network_admin_notices' : 'admin_notices', function () {
+		echo '<div class="notice notice-error"><p>' . esc_html__( 'Aam WP Migration is disabled: deactivate the original All-in-One WP Migration plugin first. Both cannot run at the same time.', 'all-in-one-wp-migration' ) . '</p></div>';
+	} );
+	return;
+}
+unset( $ai1wm_original );
+
 // Check SSL Mode
 if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && ( $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) ) {
 	$_SERVER['HTTPS'] = 'on';
@@ -95,5 +107,8 @@ if ( ! is_multisite() ) {
 
 // =======================================
 // = Remote Uploader Integration        =
+// = (single-site only, like the menus) =
 // =======================================
-require_once AI1WM_PATH . DIRECTORY_SEPARATOR . 'remote-uploader' . DIRECTORY_SEPARATOR . 'loader.php';
+if ( ! is_multisite() ) {
+	require_once AI1WM_PATH . DIRECTORY_SEPARATOR . 'remote-uploader' . DIRECTORY_SEPARATOR . 'loader.php';
+}

@@ -1,4 +1,4 @@
-﻿= 7.75 =
+= 7.75 =
 * Custom backups path on database import step
 
 = 7.74 =
@@ -311,8 +311,8 @@
 * Fixed secret key issue on upgrade of the plugin
 
 = 3.0.0 =
-* Added export to File, [Dropbox](https://webgraphicshub.com/products/dropbox-extension), [Amazon S3](https://webgraphicshub.com/products/amazon-s3-extension), [Google Drive](https://webgraphicshub.com/products/google-drive-extension)
-* Added import from File, [Dropbox](https://webgraphicshub.com/products/dropbox-extension), [Amazon S3](https://webgraphicshub.com/products/amazon-s3-extension), [Google Drive](https://webgraphicshub.com/products/google-drive-extension)
+* Added export to File, Dropbox, Amazon S3, Google Drive
+* Added import from File, Dropbox, Amazon S3, Google Drive
 * Implemented our own archiving format that reduces export and import by a factor of 10
 * One-click export with the new simplified export page
 * Improved upload functionality with auto-recognizing chunk size on import

@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/mega-extension" target="_blank">Mega</a>
+Mega

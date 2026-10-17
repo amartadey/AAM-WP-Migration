@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/box-extension" target="_blank">Box</a>
+Box

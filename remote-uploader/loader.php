@@ -23,10 +23,6 @@ if ( ! defined( 'RFU_AI1WM_PLUGIN_URL' ) ) {
 	define( 'RFU_AI1WM_PLUGIN_URL', AI1WM_URL . '/remote-uploader/' );
 }
 
-if ( ! defined( 'RFU_AI1WM_PLUGIN_BASENAME' ) ) {
-	define( 'RFU_AI1WM_PLUGIN_BASENAME', AI1WM_PLUGIN_BASENAME );
-}
-
 // Load the main class (skip the standalone plugin header file)
 require_once RFU_AI1WM_PLUGIN_DIR . 'class-remote-file-uploader.php';
 

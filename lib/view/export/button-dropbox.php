@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/dropbox-extension" target="_blank">Dropbox</a>
+Dropbox

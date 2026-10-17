@@ -93,7 +93,6 @@ if ( defined( 'WP_CLI' ) ) {
 				WP_CLI::error_multi_line(
 					array(
 						__( 'This feature is available in Multisite Extension.', AI1WM_PLUGIN_NAME ),
-						__( 'You can purchase it from this address: https://webgraphicshub.com/products/multisite-extension', AI1WM_PLUGIN_NAME ),
 					)
 				);
 				exit;
@@ -102,7 +101,6 @@ if ( defined( 'WP_CLI' ) ) {
 			WP_CLI::error_multi_line(
 				array(
 					__( 'This feature is available in Unlimited Extension.', AI1WM_PLUGIN_NAME ),
-					__( 'You can purchase it from this address: https://webgraphicshub.com/products/unlimited-extension', AI1WM_PLUGIN_NAME ),
 				)
 			);
 		}

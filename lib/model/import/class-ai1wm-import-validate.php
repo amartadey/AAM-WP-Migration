@@ -29,8 +29,7 @@ class Ai1wm_Import_Validate {
 		if ( ! ai1wm_is_filesize_supported( ai1wm_archive_path( $params ) ) ) {
 			throw new Ai1wm_Import_Exception(
 				__(
-					'Your PHP is 32-bit. In order to import your file, please change your PHP version to 64-bit and try again. ' .
-					'<a href="https://webgraphicshub.com/support/knowledgebase/php-32bit/" target="_blank">Technical details</a>',
+					'Your PHP is 32-bit. In order to import your file, please change your PHP version to 64-bit and try again.',
 					AI1WM_PLUGIN_NAME
 				)
 			);
@@ -41,8 +40,7 @@ class Ai1wm_Import_Validate {
 			throw new Ai1wm_Import_Exception(
 				__(
 					'The file type that you have tried to import is not compatible with this plugin. ' .
-					'Please ensure that your file is a <strong>.wpress</strong> file that was created with the All-in-One WP migration plugin. ' .
-					'<a href="https://webgraphicshub.com/support/knowledgebase/invalid-backup-file/" target="_blank">Technical details</a>',
+					'Please ensure that your file is a <strong>.wpress</strong> file that was created with the All-in-One WP migration plugin.',
 					AI1WM_PLUGIN_NAME
 				)
 			);
@@ -83,7 +81,7 @@ class Ai1wm_Import_Validate {
 
 		// Validate the archive file consistency
 		if ( ! $archive->is_valid() ) {
-			throw new Ai1wm_Import_Exception( __( 'The archive file is corrupted. Follow <a href="https://webgraphicshub.com/support/knowledgebase/corrupted-archive/" target="_blank">this article</a> to resolve the problem.', AI1WM_PLUGIN_NAME ) );
+			throw new Ai1wm_Import_Exception( __( 'The archive file is corrupted. Please export the site again and retry.', AI1WM_PLUGIN_NAME ) );
 		}
 
 		// Flag to hold if file data has been processed
@@ -106,7 +104,7 @@ class Ai1wm_Import_Validate {
 
 			// Check package.json file
 			if ( false === is_file( ai1wm_package_path( $params ) ) ) {
-				throw new Ai1wm_Import_Exception( __( 'Please make sure that your file was exported using <strong>All-in-One WP Migration</strong> plugin. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-backup-file/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+				throw new Ai1wm_Import_Exception( __( 'Please make sure that your file was exported using <strong>All-in-One WP Migration</strong> plugin.', AI1WM_PLUGIN_NAME ) );
 			}
 
 			// Set progress

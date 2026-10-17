@@ -26,8 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<p>
 		<?php
 		_e(
-			'All-in-One WP Migration: Your current profile role does not have Export/Import capabilities enabled. ' .
-			'<a href="https://webgraphicshub.com/support/knowledgebase/how-to-add-import-and-export-capabilities-to-wordpress-users/" target="_blank">Technical details</a>',
+			'All-in-One WP Migration: Your current profile role does not have Export/Import capabilities enabled.',
 			AI1WM_PLUGIN_NAME
 		);
 		?>

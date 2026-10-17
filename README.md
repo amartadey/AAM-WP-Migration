@@ -23,7 +23,11 @@ WordPress migration plugin — export or import a whole site (database, media, p
 
 1. Download `aam-wp-migration.zip` from the link above.
 2. WordPress admin → **Plugins → Add New → Upload Plugin** → choose the zip → **Install Now** → **Activate**.
-3. A new **All-in-One WP Migration** menu appears in the admin sidebar.
+3. A new **Aam WP Migration** menu appears in the admin sidebar.
+
+> Deactivate the original All-in-One WP Migration plugin first. Both use the same code base and cannot run at the same time; if both are active this plugin disables itself and shows a notice.
+>
+> WordPress **Multisite is not supported** — on a network install the plugin only shows a notice.
 
 ## Updates
 
@@ -42,14 +46,16 @@ Every push to `main` runs [`.github/workflows/release.yml`](.github/workflows/re
 
 | Change pushed | Result |
 | --- | --- |
-| Version bumped in the plugin header | New permanent release `vX.Y` is created (this is the version history) |
-| Code change with no version bump | The current version's `aam-wp-migration.zip` is rebuilt and replaced |
+| Version bumped in the plugin header | New release `vX.Y` is created with that version |
+| Code change with no version bump | Patch version is bumped automatically (`7.87` → `7.87.1` → `7.87.2` …), committed back to `main` by `github-actions[bot]`, and released |
+
+Every push therefore produces a new version number, so installed sites always see the update. Pull after pushing to pick up the bot's bump commit. (If `main` has branch protection, allow GitHub Actions to push to it.)
 
 The zip is built with `git archive`, so dev-only files (`.github/`, tests, guides) listed in [`.gitattributes`](.gitattributes) are stripped from the distributed plugin.
 
-### Cutting a new version
+### Cutting a new version manually
 
-Bump the number in **both** places — they must match or the build fails:
+For a minor/major bump, change the number in **both** places — they must match or the build fails:
 
 - `aam-wp-migration.php` → `Version:` header
 - `constants.php` → `AI1WM_VERSION`
@@ -63,8 +69,8 @@ Commit, push to `main`, and the release is published automatically.
 | Path | What it is |
 | --- | --- |
 | `/` | All-in-One WP Migration core |
-| `extension/` | Unlimited Extension (bundled) — removes the import size cap on single-site installs |
-| `remote-uploader/` | Remote File Uploader — pull a `.wpress`/`.zip` backup from a URL straight into the backups folder (**Tools / AI1WM → Remote Upload**) |
+| `extension/` | Unlimited features (bundled) — no import size cap, retention, schedules, Reset Hub, settings |
+| `remote-uploader/` | Remote File Uploader — pull a `.wpress` backup from a public URL straight into the backups folder (**Aam WP Migration → Remote Upload**) |
 | `updater.php` | GitHub-release self-updater |
 
 ## License

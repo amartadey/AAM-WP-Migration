@@ -47,8 +47,22 @@ if ( defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	delete_option( 'ai1wmue_backups' );
 	delete_option( 'ai1wmue_total' );
 	delete_option( 'ai1wmue_days' );
+	delete_option( 'ai1wmue_plugin_key' );
+	delete_option( 'ai1wmve_plugin_key' );
 
-	// Remove remote uploader progress file
+	// Delete scheduled backups and their cron events
+	delete_option( 'ai1wmve_schedule_events' );
+	wp_unschedule_hook( 'ai1wmve_schedule_event' );
+
+	// Delete GitHub updater cache and options left by older versions
+	delete_transient( 'ai1wm_github_release' );
+	delete_option( 'ai1wm_updater' );
+	delete_option( 'ai1wm_last_check_for_updates' );
+
+	// Delete remote uploader progress (per-user transients)
+	$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s", $wpdb->esc_like( '_transient_rfu_ai1wm_progress_' ) . '%', $wpdb->esc_like( '_transient_timeout_rfu_ai1wm_progress_' ) . '%' ) );
+
+	// Remove progress file written by older remote uploader versions
 	$progress_file = WP_CONTENT_DIR . '/rfu-ai1wm-progress.json';
 	if ( file_exists( $progress_file ) ) {
 		@unlink( $progress_file );

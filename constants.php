@@ -90,16 +90,6 @@ define( 'BANDAR_TEMPLATES_PATH', AI1WM_TEMPLATES_PATH );
 // ===============
 define( 'AI1WM_VENDOR_PATH', AI1WM_LIB_PATH . DIRECTORY_SEPARATOR . 'vendor' );
 
-// ==========================
-// = Feedback URL (disabled) =
-// ==========================
-define( 'AI1WM_FEEDBACK_URL', '' );
-
-// ==========================
-// = Archive Tools URL      =
-// ==========================
-define( 'AI1WM_ARCHIVE_TOOLS_URL', 'https://webgraphicshub.com/archive/tools' );
-
 // =========================
 // = Table Prefix Marker   =
 // =========================
@@ -400,16 +390,6 @@ define( 'AI1WM_BACKUPS_LABELS', 'ai1wm_backups_labels' );
 // ===============
 define( 'AI1WM_SITES_LINKS', 'ai1wm_sites_links' );
 
-// ==============================
-// = Last Check For Updates Key =
-// ==============================
-define( 'AI1WM_LAST_CHECK_FOR_UPDATES', 'ai1wm_last_check_for_updates' );
-
-// ===============
-// = Updater Key =
-// ===============
-define( 'AI1WM_UPDATER', 'ai1wm_updater' );
-
 // ==============
 // = Status Key =
 // ==============
@@ -568,20 +548,6 @@ if ( ! defined( 'AI1WMZE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMZE_PLUGIN_TITLE', 'Microsoft Azure Storage Extension' );
 }
 
-// ===================================
-// = Microsoft Azure Extension About =
-// ===================================
-if ( ! defined( 'AI1WMZE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMZE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/microsoft-azure-storage-extension.json' );
-}
-
-// ===================================
-// = Microsoft Azure Extension Check =
-// ===================================
-if ( ! defined( 'AI1WMZE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMZE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/microsoft-azure-storage-extension' );
-}
-
 // =================================
 // = Microsoft Azure Extension Key =
 // =================================
@@ -610,20 +576,6 @@ if ( defined( 'AI1WMAE_PLUGIN_BASENAME' ) ) {
 // ================================
 if ( ! defined( 'AI1WMAE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMAE_PLUGIN_TITLE', 'Backblaze B2 Extension' );
-}
-
-// ================================
-// = Backblaze B2 Extension About =
-// ================================
-if ( ! defined( 'AI1WMAE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMAE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/backblaze-b2-extension.json' );
-}
-
-// ================================
-// = Backblaze B2 Extension Check =
-// ================================
-if ( ! defined( 'AI1WMAE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMAE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/backblaze-b2-extension' );
 }
 
 // ==============================
@@ -656,20 +608,6 @@ if ( ! defined( 'AI1WMVE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMVE_PLUGIN_TITLE', 'Backup Plugin' );
 }
 
-// =======================
-// = Backup Plugin About =
-// =======================
-if ( ! defined( 'AI1WMVE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMVE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/backup-plugin.json' );
-}
-
-// =======================
-// = Backup Plugin Check =
-// =======================
-if ( ! defined( 'AI1WMVE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMVE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/backup-plugin' );
-}
-
 // =====================
 // = Backup Plugin Key =
 // =====================
@@ -698,20 +636,6 @@ if ( defined( 'AI1WMBE_PLUGIN_BASENAME' ) ) {
 // =======================
 if ( ! defined( 'AI1WMBE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMBE_PLUGIN_TITLE', 'Box Extension' );
-}
-
-// =======================
-// = Box Extension About =
-// =======================
-if ( ! defined( 'AI1WMBE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMBE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/box-extension.json' );
-}
-
-// =======================
-// = Box Extension Check =
-// =======================
-if ( ! defined( 'AI1WMBE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMBE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/box-extension' );
 }
 
 // =====================
@@ -744,20 +668,6 @@ if ( ! defined( 'AI1WMIE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMIE_PLUGIN_TITLE', 'DigitalOcean Spaces Extension' );
 }
 
-// =======================================
-// = DigitalOcean Spaces Extension About =
-// =======================================
-if ( ! defined( 'AI1WMIE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMIE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/digitalocean-spaces-extension.json' );
-}
-
-// =======================================
-// = DigitalOcean Spaces Extension Check =
-// =======================================
-if ( ! defined( 'AI1WMIE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMIE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/digitalocean-spaces-extension' );
-}
-
 // =====================================
 // = DigitalOcean Spaces Extension Key =
 // =====================================
@@ -786,20 +696,6 @@ if ( defined( 'AI1WMXE_PLUGIN_BASENAME' ) ) {
 if ( ! defined( 'AI1WMXE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMXE_PLUGIN_TITLE', 'Direct Extension' );
 }
-// ==========================
-// = Direct Extension About =
-// ==========================
-if ( ! defined( 'AI1WMXE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMXE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/direct-extension.json' );
-}
-
-// ==========================
-// = Direct Extension Check =
-// ==========================
-if ( ! defined( 'AI1WMXE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMXE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/direct-extension' );
-}
-
 // ========================
 // = Direct Extension Key =
 // ========================
@@ -827,20 +723,6 @@ if ( defined( 'AI1WMDE_PLUGIN_BASENAME' ) ) {
 // ===========================
 if ( ! defined( 'AI1WMDE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMDE_PLUGIN_TITLE', 'Dropbox Extension' );
-}
-
-// ===========================
-// = Dropbox Extension About =
-// ===========================
-if ( ! defined( 'AI1WMDE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMDE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/dropbox-extension.json' );
-}
-
-// ===========================
-// = Dropbox Extension Check =
-// ===========================
-if ( ! defined( 'AI1WMDE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMDE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/dropbox-extension' );
 }
 
 // =========================
@@ -873,20 +755,6 @@ if ( ! defined( 'AI1WMTE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMTE_PLUGIN_TITLE', 'File Extension' );
 }
 
-// ========================
-// = File Extension About =
-// ========================
-if ( ! defined( 'AI1WMTE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMTE_PLUGIN_ABOUT', 'https://webgraphicshub.com/import/file-extension.json' );
-}
-
-// ========================
-// = File Extension Check =
-// ========================
-if ( ! defined( 'AI1WMTE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMTE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/file-extension' );
-}
-
 // ======================
 // = File Extension Key =
 // ======================
@@ -915,20 +783,6 @@ if ( defined( 'AI1WMFE_PLUGIN_BASENAME' ) ) {
 // =======================
 if ( ! defined( 'AI1WMFE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMFE_PLUGIN_TITLE', 'FTP Extension' );
-}
-
-// =======================
-// = FTP Extension About =
-// =======================
-if ( ! defined( 'AI1WMFE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMFE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/ftp-extension.json' );
-}
-
-// =======================
-// = FTP Extension Check =
-// =======================
-if ( ! defined( 'AI1WMFE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMFE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/ftp-extension' );
 }
 
 // =====================
@@ -961,20 +815,6 @@ if ( ! defined( 'AI1WMCE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMCE_PLUGIN_TITLE', 'Google Cloud Storage Extension' );
 }
 
-// ========================================
-// = Google Cloud Storage Extension About =
-// ========================================
-if ( ! defined( 'AI1WMCE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMCE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/google-cloud-storage-extension.json' );
-}
-
-// ========================================
-// = Google Cloud Storage Extension Check =
-// ========================================
-if ( ! defined( 'AI1WMCE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMCE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/google-cloud-storage-extension' );
-}
-
 // ======================================
 // = Google Cloud Storage Extension Key =
 // ======================================
@@ -1003,20 +843,6 @@ if ( defined( 'AI1WMGE_PLUGIN_BASENAME' ) ) {
 // ================================
 if ( ! defined( 'AI1WMGE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMGE_PLUGIN_TITLE', 'Google Drive Extension' );
-}
-
-// ================================
-// = Google Drive Extension About =
-// ================================
-if ( ! defined( 'AI1WMGE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMGE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/google-drive-extension.json' );
-}
-
-// ================================
-// = Google Drive Extension Check =
-// ================================
-if ( ! defined( 'AI1WMGE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMGE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/google-drive-extension' );
 }
 
 // ==============================
@@ -1049,20 +875,6 @@ if ( ! defined( 'AI1WMRE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMRE_PLUGIN_TITLE', 'Amazon Glacier Extension' );
 }
 
-// ==================================
-// = Amazon Glacier Extension About =
-// ==================================
-if ( ! defined( 'AI1WMRE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMRE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/amazon-glacier-extension.json' );
-}
-
-// ==================================
-// = Amazon Glacier Extension Check =
-// ==================================
-if ( ! defined( 'AI1WMRE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMRE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/amazon-glacier-extension' );
-}
-
 // ================================
 // = Amazon Glacier Extension Key =
 // ================================
@@ -1091,20 +903,6 @@ if ( defined( 'AI1WMEE_PLUGIN_BASENAME' ) ) {
 // ========================
 if ( ! defined( 'AI1WMEE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMEE_PLUGIN_TITLE', 'Mega Extension' );
-}
-
-// ========================
-// = Mega Extension About =
-// ========================
-if ( ! defined( 'AI1WMEE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMEE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/mega-extension.json' );
-}
-
-// ========================
-// = Mega Extension Check =
-// ========================
-if ( ! defined( 'AI1WMEE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMEE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/mega-extension' );
 }
 
 // ======================
@@ -1137,20 +935,6 @@ if ( ! defined( 'AI1WMME_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMME_PLUGIN_TITLE', 'Multisite Extension' );
 }
 
-// =============================
-// = Multisite Extension About =
-// =============================
-if ( ! defined( 'AI1WMME_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMME_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/multisite-extension.json' );
-}
-
-// =============================
-// = Multisite Extension Check =
-// =============================
-if ( ! defined( 'AI1WMME_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMME_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/multisite-extension' );
-}
-
 // ===========================
 // = Multisite Extension Key =
 // ===========================
@@ -1179,20 +963,6 @@ if ( defined( 'AI1WMOE_PLUGIN_BASENAME' ) ) {
 // ============================
 if ( ! defined( 'AI1WMOE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMOE_PLUGIN_TITLE', 'OneDrive Extension' );
-}
-
-// ============================
-// = OneDrive Extension About =
-// ============================
-if ( ! defined( 'AI1WMOE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMOE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/onedrive-extension.json' );
-}
-
-// ============================
-// = OneDrive Extension Check =
-// ============================
-if ( ! defined( 'AI1WMOE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMOE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/onedrive-extension' );
 }
 
 // ==========================
@@ -1225,20 +995,6 @@ if ( ! defined( 'AI1WMPE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMPE_PLUGIN_TITLE', 'pCloud Extension' );
 }
 
-// ==========================
-// = pCloud Extension About =
-// ==========================
-if ( ! defined( 'AI1WMPE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMPE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/pcloud-extension.json' );
-}
-
-// ==========================
-// = pCloud Extension Check =
-// ==========================
-if ( ! defined( 'AI1WMPE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMPE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/pcloud-extension' );
-}
-
 // ========================
 // = pCloud Extension Key =
 // ========================
@@ -1267,20 +1023,6 @@ if ( defined( 'AI1WMKE_PLUGIN_BASENAME' ) ) {
 // ====================
 if ( ! defined( 'AI1WMKE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMKE_PLUGIN_TITLE', 'Pro Plugin' );
-}
-
-// ====================
-// = Pro Plugin About =
-// ====================
-if ( ! defined( 'AI1WMKE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMKE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/pro-plugin.json' );
-}
-
-// ====================
-// = Pro Plugin Check =
-// ====================
-if ( ! defined( 'AI1WMKE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMKE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/pro-plugin' );
 }
 
 // ==================
@@ -1313,20 +1055,6 @@ if ( ! defined( 'AI1WMNE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMNE_PLUGIN_TITLE', 'S3 Client Extension' );
 }
 
-// =============================
-// = S3 Client Extension About =
-// =============================
-if ( ! defined( 'AI1WMNE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMNE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/s3-client-extension.json' );
-}
-
-// =============================
-// = S3 Client Extension Check =
-// =============================
-if ( ! defined( 'AI1WMNE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMNE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/s3-client-extension' );
-}
-
 // ===========================
 // = S3 Client Extension Key =
 // ===========================
@@ -1355,20 +1083,6 @@ if ( defined( 'AI1WMSE_PLUGIN_BASENAME' ) ) {
 // =============================
 if ( ! defined( 'AI1WMSE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMSE_PLUGIN_TITLE', 'Amazon S3 Extension' );
-}
-
-// =============================
-// = Amazon S3 Extension About =
-// =============================
-if ( ! defined( 'AI1WMSE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMSE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/amazon-s3-extension.json' );
-}
-
-// =============================
-// = Amazon S3 Extension Check =
-// =============================
-if ( ! defined( 'AI1WMSE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMSE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/amazon-s3-extension' );
 }
 
 // ===========================
@@ -1401,20 +1115,6 @@ if ( ! defined( 'AI1WMUE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMUE_PLUGIN_TITLE', 'Unlimited Extension' );
 }
 
-// =============================
-// = Unlimited Extension About =
-// =============================
-if ( ! defined( 'AI1WMUE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMUE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/unlimited-extension.json' );
-}
-
-// =============================
-// = Unlimited Extension Check =
-// =============================
-if ( ! defined( 'AI1WMUE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMUE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/unlimited-extension' );
-}
-
 // ===========================
 // = Unlimited Extension Key =
 // ===========================
@@ -1445,20 +1145,6 @@ if ( ! defined( 'AI1WMLE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMLE_PLUGIN_TITLE', 'URL Extension' );
 }
 
-// =======================
-// = URL Extension About =
-// =======================
-if ( ! defined( 'AI1WMLE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMLE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/url-extension.json' );
-}
-
-// =======================
-// = URL Extension Check =
-// =======================
-if ( ! defined( 'AI1WMLE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMLE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/url-extension' );
-}
-
 // =====================
 // = URL Extension Key =
 // =====================
@@ -1487,20 +1173,6 @@ if ( defined( 'AI1WMWE_PLUGIN_BASENAME' ) ) {
 // ==========================
 if ( ! defined( 'AI1WMWE_PLUGIN_TITLE' ) ) {
 	define( 'AI1WMWE_PLUGIN_TITLE', 'WebDAV Extension' );
-}
-
-// ==========================
-// = WebDAV Extension About =
-// ==========================
-if ( ! defined( 'AI1WMWE_PLUGIN_ABOUT' ) ) {
-	define( 'AI1WMWE_PLUGIN_ABOUT', 'https://updates.webgraphicshub.com/webdav-extension.json' );
-}
-
-// ==========================
-// = WebDAV Extension Check =
-// ==========================
-if ( ! defined( 'AI1WMWE_PLUGIN_CHECK' ) ) {
-	define( 'AI1WMWE_PLUGIN_CHECK', 'https://webgraphicshub.com/v1/check/webdav-extension' );
 }
 
 // ========================

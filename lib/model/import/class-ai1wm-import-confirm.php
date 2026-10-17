@@ -76,13 +76,13 @@ class Ai1wm_Import_Confirm {
 				if ( defined( 'WP_CLI' ) ) {
 					$message = __(
 						'Your backup is from a PHP %s but the site that you are importing to is PHP %s. ' .
-						'This could cause the import to fail. Technical details: https://webgraphicshub.com/support/knowledgebase/migrate-wordpress-from-php-5-to-php-7/',
+						'This could cause the import to fail.',
 						AI1WM_PLUGIN_NAME
 					);
 				} else {
 					$message = __(
 						'<i class="ai1wm-import-info">Your backup is from a PHP %s but the site that you are importing to is PHP %s. ' .
-						'This could cause the import to fail. <a href="https://webgraphicshub.com/support/knowledgebase/migrate-wordpress-from-php-5-to-php-7/" target="_blank">Technical details</a></i>',
+						'This could cause the import to fail.</i>',
 						AI1WM_PLUGIN_NAME
 					);
 				}

@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/google-drive-extension" target="_blank">Google Drive</a>
+Google Drive

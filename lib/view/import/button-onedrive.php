@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/onedrive-extension" target="_blank">OneDrive</a>
+OneDrive

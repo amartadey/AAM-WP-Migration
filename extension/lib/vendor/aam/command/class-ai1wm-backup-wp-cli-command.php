@@ -492,26 +492,5 @@ if ( class_exists( 'Ai1wm_Backup_WP_CLI_Base' ) && ! class_exists( 'Ai1wm_Backup
 				WP_CLI::error( __( sprintf( 'Unable to reset: %s', $e->getMessage() ), AI1WM_PLUGIN_NAME ) );
 			}
 		}
-
-		/**
-		 * Check for plugin updates
-		 *
-		 * ## EXAMPLES
-		 *
-		 * $ wp ai1wm check-for-updates
-		 * Success: Check for updates completed.
-		 *
-		 * @subcommand check-for-updates
-		 */
-		public function check_for_updates( $args = array(), $assoc_args = array() ) {
-			try {
-				// Check for updtes
-				Ai1wm_Updater::check_for_updates();
-
-				WP_CLI::success( __( 'Check for updates completed.', AI1WM_PLUGIN_NAME ) );
-			} catch ( Exception $e ) {
-				WP_CLI::error( __( sprintf( 'Unable to check for updates: %s', $e->getMessage() ), AI1WM_PLUGIN_NAME ) );
-			}
-		}
 	}
 }

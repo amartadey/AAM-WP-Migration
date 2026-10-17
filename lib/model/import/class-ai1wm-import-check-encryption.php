@@ -39,7 +39,7 @@ class Ai1wm_Import_Check_Encryption {
 		}
 
 		if ( ! ai1wm_can_decrypt() ) {
-			$message = __( 'Importing an encrypted backup is not supported on this server. <a href="https://webgraphicshub.com/support/knowledgebase/unable-to-encrypt-and-decrypt-backups/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME );
+			$message = __( 'Importing an encrypted backup is not supported on this server.', AI1WM_PLUGIN_NAME );
 
 			if ( defined( 'WP_CLI' ) ) {
 				WP_CLI::error( $message );

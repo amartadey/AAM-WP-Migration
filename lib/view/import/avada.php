@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( $should_reset_permalinks ) {
-	print( __( '» Permalinks are set to default. <a class="ai1wm-no-underline" href="https://webgraphicshub.com/support/knowledgebase/permalinks-are-set-to-default/" target="_blank">Why?</a> (opens a new window)<br />', AI1WM_PLUGIN_NAME ) );
+	print( __( '» Permalinks are set to default.<br />', AI1WM_PLUGIN_NAME ) );
 } else {
 	printf( __( '» <a class="ai1wm-no-underline" href="%s" target="_blank">Save permalinks structure</a>. (opens a new window)<br />', AI1WM_PLUGIN_NAME ), admin_url( 'options-permalink.php#submit' ) );
 }
@@ -32,4 +32,3 @@ if ( ai1wm_validate_plugin_basename( 'oxygen/functions.php' ) ) {
 }
 
 print( __( '» <a class="ai1wm-no-underline" href="https://theme-fusion.com/documentation/avada/installation-maintenance/important-update-information/#clear-caches" target="_blank">Reset Avada Fusion Builder cache</a>. (opens a new window)<br />', AI1WM_PLUGIN_NAME ) );
-print( __( '» <a class="ai1wm-no-underline" href="https://wordpress.org/support/view/plugin-reviews/all-in-one-wp-migration?rate=5#postform" target="_blank">Optionally, review the plugin</a>. (opens a new window)', AI1WM_PLUGIN_NAME ) );

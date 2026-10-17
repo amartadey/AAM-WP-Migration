@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/amazon-glacier-extension" target="_blank">Amazon Glacier</a>
+Amazon Glacier

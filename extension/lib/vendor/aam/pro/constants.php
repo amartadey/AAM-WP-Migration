@@ -46,16 +46,6 @@ define( 'AI1WMVE_UTILS_PATH', AI1WMVE_PATH . DIRECTORY_SEPARATOR . 'utils' );
 // =============
 define( 'AI1WMVE_TEMPLATES_PATH', AI1WMVE_PATH . DIRECTORY_SEPARATOR . 'view' );
 
-// ===========================
-// = Purchase Activation URL =
-// ===========================
-define( 'AI1WMVE_PURCHASE_ACTIVATION_URL', 'https://webgraphicshub.com/purchase/activations' );
-
-// ======================
-// = Amarta Dey Stats URL =
-// ======================
-define( 'AI1WMVE_STATS_URL', 'https://webgraphicshub.com/api/stats' );
-
 // =================
 // = Max File Size =
 // =================

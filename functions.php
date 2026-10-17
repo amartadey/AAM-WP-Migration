@@ -29,12 +29,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function ai1wm_storage_path( $params ) {
 	if ( empty( $params['storage'] ) ) {
-		throw new Ai1wm_Storage_Exception( __( 'Unable to locate storage path. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-storage-path/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Storage_Exception( __( 'Unable to locate storage path.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	// Validate storage path
 	if ( ai1wm_validate_file( $params['storage'] ) !== 0 ) {
-		throw new Ai1wm_Storage_Exception( __( 'Your storage directory name contains invalid characters. It cannot contain: < > : " | ? * \0. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-storage-name/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Storage_Exception( __( 'Your storage directory name contains invalid characters. It cannot contain: < > : " | ? * \0.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	// Get storage path
@@ -54,17 +54,17 @@ function ai1wm_storage_path( $params ) {
  */
 function ai1wm_backup_path( $params ) {
 	if ( empty( $params['archive'] ) ) {
-		throw new Ai1wm_Archive_Exception( __( 'Unable to locate archive path. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-archive-path/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Archive_Exception( __( 'Unable to locate archive path.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	// Validate archive path
 	if ( ai1wm_validate_file( $params['archive'] ) !== 0 ) {
-		throw new Ai1wm_Archive_Exception( __( 'Your archive file name contains invalid characters. It cannot contain: < > : " | ? * \0. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-archive-name/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Archive_Exception( __( 'Your archive file name contains invalid characters. It cannot contain: < > : " | ? * \0.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	// Validate file extension
 	if ( ! ai1wm_is_filename_supported( $params['archive'] ) ) {
-		throw new Ai1wm_Archive_Exception( __( 'Invalid archive file type. Only .wpress files are allowed. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-file-type/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Archive_Exception( __( 'Invalid archive file type. Only .wpress files are allowed.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	return AI1WM_BACKUPS_PATH . DIRECTORY_SEPARATOR . $params['archive'];
@@ -101,17 +101,17 @@ function ai1wm_validate_file( $file, $allowed_files = array() ) {
  */
 function ai1wm_archive_path( $params ) {
 	if ( empty( $params['archive'] ) ) {
-		throw new Ai1wm_Archive_Exception( __( 'Unable to locate archive path. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-archive-path/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Archive_Exception( __( 'Unable to locate archive path.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	// Validate archive path
 	if ( ai1wm_validate_file( $params['archive'] ) !== 0 ) {
-		throw new Ai1wm_Archive_Exception( __( 'Your archive file name contains invalid characters. It cannot contain: < > : " | ? * \0. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-archive-name/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Archive_Exception( __( 'Your archive file name contains invalid characters. It cannot contain: < > : " | ? * \0.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	// Validate file extension
 	if ( ! ai1wm_is_filename_supported( $params['archive'] ) ) {
-		throw new Ai1wm_Archive_Exception( __( 'Invalid archive file type. Only .wpress files are allowed. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-file-type/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Archive_Exception( __( 'Invalid archive file type. Only .wpress files are allowed.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	// Get archive path
@@ -1477,7 +1477,7 @@ function ai1wm_url_scheme( $url, $scheme = '' ) {
 function ai1wm_open( $file, $mode ) {
 	$file_handle = @fopen( $file, $mode );
 	if ( false === $file_handle ) {
-		throw new Ai1wm_Not_Accessible_Exception( sprintf( __( 'Unable to open %s with mode %s. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-file-permissions/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), $file, $mode ) );
+		throw new Ai1wm_Not_Accessible_Exception( sprintf( __( 'Unable to open %s with mode %s.', AI1WM_PLUGIN_NAME ), $file, $mode ) );
 	}
 
 	return $file_handle;
@@ -1496,13 +1496,13 @@ function ai1wm_write( $handle, $content ) {
 	$write_result = @fwrite( $handle, $content );
 	if ( false === $write_result ) {
 		if ( ( $meta = stream_get_meta_data( $handle ) ) ) {
-			throw new Ai1wm_Not_Writable_Exception( sprintf( __( 'Unable to write to: %s. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-file-permissions/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
+			throw new Ai1wm_Not_Writable_Exception( sprintf( __( 'Unable to write to: %s.', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
 		}
 	} elseif ( null === $write_result ) {
 		return strlen( $content );
 	} elseif ( strlen( $content ) !== $write_result ) {
 		if ( ( $meta = stream_get_meta_data( $handle ) ) ) {
-			throw new Ai1wm_Quota_Exceeded_Exception( sprintf( __( 'Out of disk space. Unable to write to: %s. <a href="https://webgraphicshub.com/support/knowledgebase/out-of-disk-space/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
+			throw new Ai1wm_Quota_Exceeded_Exception( sprintf( __( 'Out of disk space. Unable to write to: %s.', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
 		}
 	}
 
@@ -1522,7 +1522,7 @@ function ai1wm_read( $handle, $length ) {
 		$read_result = @fread( $handle, $length );
 		if ( false === $read_result ) {
 			if ( ( $meta = stream_get_meta_data( $handle ) ) ) {
-				throw new Ai1wm_Not_Readable_Exception( sprintf( __( 'Unable to read file: %s. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-file-permissions/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
+				throw new Ai1wm_Not_Readable_Exception( sprintf( __( 'Unable to read file: %s.', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
 			}
 		}
 
@@ -1544,7 +1544,7 @@ function ai1wm_seek( $handle, $offset, $mode = SEEK_SET ) {
 	$seek_result = @fseek( $handle, $offset, $mode );
 	if ( -1 === $seek_result ) {
 		if ( ( $meta = stream_get_meta_data( $handle ) ) ) {
-			throw new Ai1wm_Not_Seekable_Exception( sprintf( __( 'Unable to seek to offset %d on %s. <a href="https://webgraphicshub.com/support/knowledgebase/php-32bit/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), $offset, $meta['uri'] ) );
+			throw new Ai1wm_Not_Seekable_Exception( sprintf( __( 'Unable to seek to offset %d on %s.', AI1WM_PLUGIN_NAME ), $offset, $meta['uri'] ) );
 		}
 	}
 
@@ -1561,7 +1561,7 @@ function ai1wm_tell( $handle ) {
 	$tell_result = @ftell( $handle );
 	if ( false === $tell_result ) {
 		if ( ( $meta = stream_get_meta_data( $handle ) ) ) {
-			throw new Ai1wm_Not_Tellable_Exception( sprintf( __( 'Unable to get current pointer position of %s. <a href="https://webgraphicshub.com/support/knowledgebase/php-32bit/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
+			throw new Ai1wm_Not_Tellable_Exception( sprintf( __( 'Unable to get current pointer position of %s.', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
 		}
 	}
 
@@ -1580,7 +1580,7 @@ function ai1wm_putcsv( $handle, $fields ) {
 	$write_result = @fputcsv( $handle, $fields );
 	if ( false === $write_result ) {
 		if ( ( $meta = stream_get_meta_data( $handle ) ) ) {
-			throw new Ai1wm_Not_Writable_Exception( sprintf( __( 'Unable to write to: %s. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-file-permissions/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
+			throw new Ai1wm_Not_Writable_Exception( sprintf( __( 'Unable to write to: %s.', AI1WM_PLUGIN_NAME ), $meta['uri'] ) );
 		}
 	}
 
@@ -1695,7 +1695,7 @@ function ai1wm_is_filename_supported( $file, $extensions = array( 'wpress' ) ) {
  */
 function ai1wm_verify_secret_key( $secret_key ) {
 	if ( $secret_key !== get_option( AI1WM_SECRET_KEY ) ) {
-		throw new Ai1wm_Not_Valid_Secret_Key_Exception( __( 'Unable to authenticate the secret key. <a href="https://webgraphicshub.com/support/knowledgebase/invalid-secret-key/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ) );
+		throw new Ai1wm_Not_Valid_Secret_Key_Exception( __( 'Unable to authenticate the secret key.', AI1WM_PLUGIN_NAME ) );
 	}
 
 	return true;
@@ -2185,14 +2185,3 @@ function ai1wm_auth_headers( $headers = array() ) {
 function ai1wm_direct_download_supported() {
 	return ! ( $_SERVER['SERVER_NAME'] === 'playground.wordpress.net' || $_SERVER['SERVER_SOFTWARE'] === 'PHP.wasm' );
 }
-
-// Rename sidebar menu label via JS (does not affect page slugs or hooks)
-add_action( 'admin_enqueue_scripts', function() {
-	wp_enqueue_script(
-		'ai1wm_admin_rename',
-		AI1WM_URL . '/lib/view/assets/javascript/admin-rename.js',
-		array(),
-		AI1WM_VERSION,
-		true
-	);
-} );

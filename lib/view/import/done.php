@@ -23,15 +23,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if ( $should_reset_permalinks ) {
 	_e(
-		'» Permalinks are set to default. <a class="ai1wm-no-underline" href="https://webgraphicshub.com/support/knowledgebase/permalinks-are-set-to-default/" target="_blank">Why?</a> (opens a new window)<br />' .
-		'» <a class="ai1wm-no-underline" href="https://wordpress.org/support/view/plugin-reviews/all-in-one-wp-migration?rate=5#postform" target="_blank">Optionally, review the plugin</a>. (opens a new window)',
+		'» Permalinks are set to default.',
 		AI1WM_PLUGIN_NAME
 	);
 } else {
 	printf(
 		__(
-			'» <a class="ai1wm-no-underline" href="%s" target="_blank">Save permalinks structure</a>. (opens a new window)<br />' .
-			'» <a class="ai1wm-no-underline" href="https://wordpress.org/support/view/plugin-reviews/all-in-one-wp-migration?rate=5#postform" target="_blank">Optionally, review the plugin</a>. (opens a new window)',
+			'» <a class="ai1wm-no-underline" href="%s" target="_blank">Save permalinks structure</a>. (opens a new window)',
 			AI1WM_PLUGIN_NAME
 		),
 		admin_url( 'options-permalink.php#submit' )

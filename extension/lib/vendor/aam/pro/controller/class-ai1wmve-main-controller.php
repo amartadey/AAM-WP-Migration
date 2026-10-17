@@ -70,8 +70,6 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 
 			$this->ai1wve_check_if_constants_are_defined();
 
-			register_activation_hook( $this->plugin_base_name, array( $this, 'ai1wmve_activation_hook' ) );
-
 			// Activate hooks
 			$this->ai1wmve_activate_actions();
 			$this->ai1wmve_activate_filters();
@@ -150,33 +148,6 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 		abstract protected function activate_actions();
 
 		/**
-		 * Activation hook callback
-		 *
-		 * @return void
-		 */
-		public function ai1wmve_activation_hook() {
-			// Create activation request
-			if ( $this->purchase_id && defined( 'AI1WMVE_PURCHASE_ACTIVATION_URL' ) ) {
-				global $wpdb;
-
-				wp_remote_post(
-					AI1WMVE_PURCHASE_ACTIVATION_URL,
-					array(
-						'timeout' => 15,
-						'body'    => array(
-							'url'           => get_site_url(),
-							'email'         => get_option( 'admin_email' ),
-							'wp_version'    => get_bloginfo( 'version' ),
-							'php_version'   => PHP_VERSION,
-							'mysql_version' => $wpdb->db_version(),
-							'uuid'          => $this->purchase_id,
-						),
-					)
-				);
-			}
-		}
-
-		/**
 		 * Initializes language domain for the plugin
 		 *
 		 * @return void
@@ -240,12 +211,6 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 				// Schedule event log actions
 				add_action( 'ai1wm_status_export_done', 'Ai1wmve_Schedules_Controller::log_success' );
 				add_action( 'ai1wm_status_export_error', 'Ai1wmve_Schedules_Controller::log_failed', 10, 2 );
-
-				// Register stats collect actions if URL is defined
-				if ( defined( 'AI1WMVE_STATS_URL' ) ) {
-					add_action( 'ai1wm_status_export_done', array( $this, 'ai1wmve_export_stats' ) );
-					add_action( 'ai1wm_status_import_done', array( $this, 'ai1wmve_import_stats' ) );
-				}
 
 				// Register creating backup notes for reset hub backups
 				add_action( 'ai1wm_status_export_done', array( $this, 'create_reset_backup_label' ) );
@@ -358,7 +323,7 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 		 * @return void
 		 */
 		public function ai1wmve_enqueue_import_scripts_and_styles( $hook ) {
-			if ( stripos( 'all-in-one-wp-migration_page_ai1wm_import', $hook ) === false ) {
+			if ( stripos( 'aam-wp-migration_page_ai1wm_import', $hook ) === false ) {
 				return;
 			}
 
@@ -394,7 +359,7 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 		 * @return void
 		 */
 		public function ai1wmve_enqueue_backups_scripts_and_styles( $hook ) {
-			if ( stripos( 'all-in-one-wp-migration_page_ai1wm_backups', $hook ) === false ) {
+			if ( stripos( 'aam-wp-migration_page_ai1wm_backups', $hook ) === false ) {
 				return;
 			}
 
@@ -412,7 +377,7 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 		 * @return void
 		 */
 		public function ai1wmve_enqueue_schedules_scripts_and_styles( $hook ) {
-			if ( stripos( 'all-in-one-wp-migration_page_ai1wmve_schedules', $hook ) === false ) {
+			if ( stripos( 'aam-wp-migration_page_ai1wmve_schedules', $hook ) === false ) {
 				return;
 			}
 
@@ -468,17 +433,6 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 						'delete' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_schedule_event_delete' ) ),
 						'log'    => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_schedule_event_log' ) ),
 						'run'    => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_schedule_event_manual_run' ) ),
-					),
-					'secret_key' => get_option( AI1WM_SECRET_KEY ),
-				)
-			);
-
-			wp_localize_script(
-				'ai1wmve_schedules',
-				'ai1wm_feedback',
-				array(
-					'ajax'       => array(
-						'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_feedback' ) ),
 					),
 					'secret_key' => get_option( AI1WM_SECRET_KEY ),
 				)
@@ -577,7 +531,7 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 		 * @return void
 		 */
 		public function ai1wmve_enqueue_reset_scripts_and_styles( $hook ) {
-			if ( stripos( 'all-in-one-wp-migration_page_ai1wmve_reset', $hook ) === false ) {
+			if ( stripos( 'aam-wp-migration_page_ai1wmve_reset', $hook ) === false ) {
 				return;
 			}
 
@@ -706,17 +660,6 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 
 			wp_localize_script(
 				'ai1wm_backups',
-				'ai1wm_feedback',
-				array(
-					'ajax'       => array(
-						'url' => wp_make_link_relative( admin_url( 'admin-ajax.php?action=ai1wm_feedback' ) ),
-					),
-					'secret_key' => get_option( AI1WM_SECRET_KEY ),
-				)
-			);
-
-			wp_localize_script(
-				'ai1wm_backups',
 				'ai1wm_import',
 				array(
 					'ajax'       => array(
@@ -817,8 +760,8 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 					'thanks_for_submitting_your_feedback' => __( 'Thanks for submitting your feedback!', $this->plugin_name ),
 					'thanks_for_submitting_your_request'  => __( 'Thanks for submitting your request!', $this->plugin_name ),
 					'want_to_delete_this_file'            => __( 'Are you sure you want to delete this file?', $this->plugin_name ),
-					'unlimited'                           => __( 'Restoring a backup is available via Unlimited extension. <a href="https://webgraphicshub.com/products/unlimited-extension" target="_blank">Get it here</a>', $this->plugin_name ),
-					'restore_from_file'                   => __( '"Restore" functionality is available in a <a href="https://webgraphicshub.com/products/unlimited-extension" target="_blank">paid extension</a>.<br />You could also download the backup and then use "Import from file".', $this->plugin_name ),
+					'unlimited'                           => __( 'Restoring a backup is available via Unlimited extension.', $this->plugin_name ),
+					'restore_from_file'                   => __( '"Restore" functionality is available in a paid extension.<br />You could also download the backup and then use "Import from file".', $this->plugin_name ),
 					'out_of_disk_space'                   => __(
 						'There is not enough space available on the disk.<br />' .
 						'Free up %s of disk space.',
@@ -975,59 +918,6 @@ if ( ! class_exists( 'Ai1wmve_Main_Controller' ) ) {
 		 */
 		public function ai1wmve_max_file_size() {
 			return AI1WMVE_MAX_FILE_SIZE;
-		}
-
-		public function ai1wmve_export_stats( $params ) {
-			if ( ! isset( $params[ $this->plugin_params_key ] ) ) {
-				return;
-			}
-
-			if ( isset( $params['ai1wm_manual_export'] ) ) {
-				$this->ai1wmve_send_stats( 'export' );
-			}
-		}
-
-		public function ai1wmve_import_stats( $params ) {
-			if ( ! isset( $params[ $this->plugin_params_key ] ) ) {
-				return;
-			}
-
-			if ( isset( $params['ai1wm_manual_restore'] ) ) {
-				$this->ai1wmve_send_stats( 'restore' );
-			}
-
-			if ( isset( $params['ai1wm_manual_import'] ) ) {
-				$this->ai1wmve_send_stats( 'import' );
-			}
-		}
-
-		protected function ai1wmve_send_stats( $action ) {
-			if ( $this->purchase_id ) {
-				global $wpdb;
-
-				$url = implode(
-					'/',
-					array(
-						AI1WMVE_STATS_URL,
-						$this->purchase_id,
-						$action,
-					)
-				);
-
-				wp_remote_post(
-					$url,
-					array(
-						'timeout' => 5,
-						'body'    => array(
-							'url'           => get_site_url(),
-							'email'         => get_option( 'admin_email' ),
-							'wp_version'    => get_bloginfo( 'version' ),
-							'php_version'   => PHP_VERSION,
-							'mysql_version' => $wpdb->db_version(),
-						),
-					)
-				);
-			}
 		}
 
 		/**

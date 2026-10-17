@@ -48,8 +48,7 @@ class Ai1wm_Import_Upload {
 			throw new Ai1wm_Import_Exception(
 				__(
 					'The file type that you have tried to upload is not compatible with this plugin. ' .
-					'Please ensure that your file is a <strong>.wpress</strong> file that was created with the All-in-One WP migration plugin. ' .
-					'<a href="https://webgraphicshub.com/support/knowledgebase/invalid-backup-file/" target="_blank">Technical details</a>',
+					'Please ensure that your file is a <strong>.wpress</strong> file that was created with the All-in-One WP migration plugin.',
 					AI1WM_PLUGIN_NAME
 				)
 			);

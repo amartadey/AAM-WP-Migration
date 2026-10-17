@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/microsoft-azure-storage-extension" target="_blank">Azure Storage</a>
+Azure Storage

@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/s3-client-extension" target="_blank">S3 Client</a>
+S3 Client

@@ -45,7 +45,7 @@ class Ai1wm_Database_Mysqli extends Ai1wm_Database {
 			// MySQL server has gone away, try to reconnect
 			if ( empty( $this->wpdb->dbh ) || 2006 === $mysqli_errno ) {
 				if ( ! $this->wpdb->check_connection( false ) ) {
-					throw new Ai1wm_Database_Exception( __( 'Error reconnecting to the database. <a href="https://webgraphicshub.com/support/knowledgebase/mysql-error-reconnecting/" target="_blank">Technical details</a>', AI1WM_PLUGIN_NAME ), 503 );
+					throw new Ai1wm_Database_Exception( __( 'Error reconnecting to the database.', AI1WM_PLUGIN_NAME ), 503 );
 				}
 
 				mysqli_real_query( $this->wpdb->dbh, $input );

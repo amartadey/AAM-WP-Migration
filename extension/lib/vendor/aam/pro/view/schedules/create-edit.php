@@ -311,7 +311,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		</div>
 
-		<?php include AI1WM_TEMPLATES_PATH . '/common/sidebar-right.php'; ?>
 
 	</div>
 

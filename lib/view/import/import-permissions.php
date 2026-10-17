@@ -27,8 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	printf(
 		__(
 			'<h3>Site could not be imported</h3>' .
-			'<p>Please make sure that storage directory <strong>%s</strong> has read and write permissions.</p>' .
-			'<p><a href="https://webgraphicshub.com/support/knowledgebase/invalid-file-permissions/" target="_blank">Technical details</a></p>',
+			'<p>Please make sure that storage directory <strong>%s</strong> has read and write permissions.</p>',
 			AI1WM_PLUGIN_NAME
 		),
 		AI1WM_STORAGE_PATH

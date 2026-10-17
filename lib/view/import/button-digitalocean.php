@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/digitalocean-spaces-extension" target="_blank">DigitalOcean</a>
+DigitalOcean

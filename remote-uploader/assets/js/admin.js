@@ -66,15 +66,6 @@
                     return;
                 }
             }
-
-            // Warn if the URL is plain http:// (will auto-upgrade, but inform user)
-            if (/^http:\/\//i.test(val)) {
-                $urlHint
-                    .addClass('hint-warn')
-                    .html('ℹ This URL uses HTTP. It will be automatically upgraded to HTTPS before downloading.')
-                    .show();
-                return;
-            }
         });
 
         // ── Form submit ───────────────────────────────────────────────
@@ -153,7 +144,6 @@
                         console.log('RFU AI1WM: Download completed successfully');
                         console.log('RFU AI1WM: File details:', {
                             filename: response.data.filename,
-                            path: response.data.path,
                             size: response.data.size
                         });
 
@@ -162,12 +152,10 @@
                         showMessage('success', '✓ File uploaded successfully! <strong>' + response.data.filename + '</strong> (' + formatBytes(response.data.size) + ')');
 
                         // Show "Restore Now" button if AI1WM is active
-                        if (rfuAi1wm.ai1wm_active && rfuAi1wm.ai1wm_restore_url) {
-                            $restoreAction.html(
-                                '✓ The backup is now in your AI1WM backups folder.' +
-                                ' <a href="' + rfuAi1wm.ai1wm_restore_url + '" class="button button-primary">Restore with AI1WM →</a>'
-                            ).show();
-                        }
+                        $restoreAction.html(
+                            '✓ The backup is now in your backups folder.' +
+                            ' <a href="' + rfuAi1wm.ai1wm_restore_url + '" class="button button-primary">Open Backups →</a>'
+                        ).show();
 
                         $submitButton.prop('disabled', false).text('Start Upload');
                         $cancelButton.hide();
@@ -200,12 +188,17 @@
                         ajaxStatus: status
                     });
 
+                    // Proxy/gateway cut the long request (e.g. Cloudflare 524 after 100s).
+                    // The server keeps downloading (ignore_user_abort), so let the poller report the outcome.
+                    if ([0, 502, 504, 520, 522, 524].indexOf(xhr.status) !== -1 && !isFinished) {
+                        $progressStatus.text('Connection to browser dropped — download continues on the server...');
+                        return;
+                    }
+
                     stopAll();
 
                     let errorMessage = 'Upload error: ';
-                    if (xhr.status === 0) {
-                        errorMessage += 'Network error — check your internet connection.';
-                    } else if (xhr.status === 403) {
+                    if (xhr.status === 403) {
                         errorMessage += 'Permission denied (403). Check WordPress permissions.';
                     } else if (xhr.status === 404) {
                         errorMessage += 'AJAX endpoint not found (404). Ensure the plugin is activated.';
@@ -294,6 +287,10 @@
                                 stopAll();
                                 updateProgress(100, data.total, data.total, 'Complete!', data);
                                 showMessage('success', 'File uploaded successfully! Filename: ' + (data.filename || 'Unknown'));
+                                $restoreAction.html(
+                                    '✓ The backup is now in your backups folder.' +
+                                    ' <a href="' + rfuAi1wm.ai1wm_restore_url + '" class="button button-primary">Open Backups →</a>'
+                                ).show();
                                 $submitButton.prop('disabled', false).text('Start Upload');
                                 $cancelButton.hide();
 

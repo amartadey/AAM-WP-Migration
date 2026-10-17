@@ -36,8 +36,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMZE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMZE_PLUGIN_KEY,
 				'title'    => AI1WMZE_PLUGIN_TITLE,
-				'about'    => AI1WMZE_PLUGIN_ABOUT,
-				'check'    => AI1WMZE_PLUGIN_CHECK,
 				'basename' => AI1WMZE_PLUGIN_BASENAME,
 				'version'  => AI1WMZE_VERSION,
 				'requires' => '1.45',
@@ -50,8 +48,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMAE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMAE_PLUGIN_KEY,
 				'title'    => AI1WMAE_PLUGIN_TITLE,
-				'about'    => AI1WMAE_PLUGIN_ABOUT,
-				'check'    => AI1WMAE_PLUGIN_CHECK,
 				'basename' => AI1WMAE_PLUGIN_BASENAME,
 				'version'  => AI1WMAE_VERSION,
 				'requires' => '1.50',
@@ -64,8 +60,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMVE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMVE_PLUGIN_KEY,
 				'title'    => AI1WMVE_PLUGIN_TITLE,
-				'about'    => AI1WMVE_PLUGIN_ABOUT,
-				'check'    => AI1WMVE_PLUGIN_CHECK,
 				'basename' => AI1WMVE_PLUGIN_BASENAME,
 				'version'  => AI1WMVE_VERSION,
 				'requires' => '1.0',
@@ -78,8 +72,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMBE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMBE_PLUGIN_KEY,
 				'title'    => AI1WMBE_PLUGIN_TITLE,
-				'about'    => AI1WMBE_PLUGIN_ABOUT,
-				'check'    => AI1WMBE_PLUGIN_CHECK,
 				'basename' => AI1WMBE_PLUGIN_BASENAME,
 				'version'  => AI1WMBE_VERSION,
 				'requires' => '1.61',
@@ -92,8 +84,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMIE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMIE_PLUGIN_KEY,
 				'title'    => AI1WMIE_PLUGIN_TITLE,
-				'about'    => AI1WMIE_PLUGIN_ABOUT,
-				'check'    => AI1WMIE_PLUGIN_CHECK,
 				'basename' => AI1WMIE_PLUGIN_BASENAME,
 				'version'  => AI1WMIE_VERSION,
 				'requires' => '1.61',
@@ -106,8 +96,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMXE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMXE_PLUGIN_KEY,
 				'title'    => AI1WMXE_PLUGIN_TITLE,
-				'about'    => AI1WMXE_PLUGIN_ABOUT,
-				'check'    => AI1WMXE_PLUGIN_CHECK,
 				'basename' => AI1WMXE_PLUGIN_BASENAME,
 				'version'  => AI1WMXE_VERSION,
 				'requires' => '1.30',
@@ -120,8 +108,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMDE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMDE_PLUGIN_KEY,
 				'title'    => AI1WMDE_PLUGIN_TITLE,
-				'about'    => AI1WMDE_PLUGIN_ABOUT,
-				'check'    => AI1WMDE_PLUGIN_CHECK,
 				'basename' => AI1WMDE_PLUGIN_BASENAME,
 				'version'  => AI1WMDE_VERSION,
 				'requires' => '3.85',
@@ -134,8 +120,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMTE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMTE_PLUGIN_KEY,
 				'title'    => AI1WMTE_PLUGIN_TITLE,
-				'about'    => AI1WMTE_PLUGIN_ABOUT,
-				'check'    => AI1WMTE_PLUGIN_CHECK,
 				'basename' => AI1WMTE_PLUGIN_BASENAME,
 				'version'  => AI1WMTE_VERSION,
 				'requires' => '1.5',
@@ -148,8 +132,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMFE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMFE_PLUGIN_KEY,
 				'title'    => AI1WMFE_PLUGIN_TITLE,
-				'about'    => AI1WMFE_PLUGIN_ABOUT,
-				'check'    => AI1WMFE_PLUGIN_CHECK,
 				'basename' => AI1WMFE_PLUGIN_BASENAME,
 				'version'  => AI1WMFE_VERSION,
 				'requires' => '2.84',
@@ -162,8 +144,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMCE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMCE_PLUGIN_KEY,
 				'title'    => AI1WMCE_PLUGIN_TITLE,
-				'about'    => AI1WMCE_PLUGIN_ABOUT,
-				'check'    => AI1WMCE_PLUGIN_CHECK,
 				'basename' => AI1WMCE_PLUGIN_BASENAME,
 				'version'  => AI1WMCE_VERSION,
 				'requires' => '1.53',
@@ -176,8 +156,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMGE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMGE_PLUGIN_KEY,
 				'title'    => AI1WMGE_PLUGIN_TITLE,
-				'about'    => AI1WMGE_PLUGIN_ABOUT,
-				'check'    => AI1WMGE_PLUGIN_CHECK,
 				'basename' => AI1WMGE_PLUGIN_BASENAME,
 				'version'  => AI1WMGE_VERSION,
 				'requires' => '2.89',
@@ -190,8 +168,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMRE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMRE_PLUGIN_KEY,
 				'title'    => AI1WMRE_PLUGIN_TITLE,
-				'about'    => AI1WMRE_PLUGIN_ABOUT,
-				'check'    => AI1WMRE_PLUGIN_CHECK,
 				'basename' => AI1WMRE_PLUGIN_BASENAME,
 				'version'  => AI1WMRE_VERSION,
 				'requires' => '1.47',
@@ -204,8 +180,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMEE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMEE_PLUGIN_KEY,
 				'title'    => AI1WMEE_PLUGIN_TITLE,
-				'about'    => AI1WMEE_PLUGIN_ABOUT,
-				'check'    => AI1WMEE_PLUGIN_CHECK,
 				'basename' => AI1WMEE_PLUGIN_BASENAME,
 				'version'  => AI1WMEE_VERSION,
 				'requires' => '1.54',
@@ -218,8 +192,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMME_PLUGIN_NAME ] = array(
 				'key'      => AI1WMME_PLUGIN_KEY,
 				'title'    => AI1WMME_PLUGIN_TITLE,
-				'about'    => AI1WMME_PLUGIN_ABOUT,
-				'check'    => AI1WMME_PLUGIN_CHECK,
 				'basename' => AI1WMME_PLUGIN_BASENAME,
 				'version'  => AI1WMME_VERSION,
 				'requires' => '4.37',
@@ -232,8 +204,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMOE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMOE_PLUGIN_KEY,
 				'title'    => AI1WMOE_PLUGIN_TITLE,
-				'about'    => AI1WMOE_PLUGIN_ABOUT,
-				'check'    => AI1WMOE_PLUGIN_CHECK,
 				'basename' => AI1WMOE_PLUGIN_BASENAME,
 				'version'  => AI1WMOE_VERSION,
 				'requires' => '1.74',
@@ -246,8 +216,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMPE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMPE_PLUGIN_KEY,
 				'title'    => AI1WMPE_PLUGIN_TITLE,
-				'about'    => AI1WMPE_PLUGIN_ABOUT,
-				'check'    => AI1WMPE_PLUGIN_CHECK,
 				'basename' => AI1WMPE_PLUGIN_BASENAME,
 				'version'  => AI1WMPE_VERSION,
 				'requires' => '1.48',
@@ -260,8 +228,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMKE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMKE_PLUGIN_KEY,
 				'title'    => AI1WMKE_PLUGIN_TITLE,
-				'about'    => AI1WMKE_PLUGIN_ABOUT,
-				'check'    => AI1WMKE_PLUGIN_CHECK,
 				'basename' => AI1WMKE_PLUGIN_BASENAME,
 				'version'  => AI1WMKE_VERSION,
 				'requires' => '1.0',
@@ -274,8 +240,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMNE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMNE_PLUGIN_KEY,
 				'title'    => AI1WMNE_PLUGIN_TITLE,
-				'about'    => AI1WMNE_PLUGIN_ABOUT,
-				'check'    => AI1WMNE_PLUGIN_CHECK,
 				'basename' => AI1WMNE_PLUGIN_BASENAME,
 				'version'  => AI1WMNE_VERSION,
 				'requires' => '1.45',
@@ -288,8 +252,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMSE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMSE_PLUGIN_KEY,
 				'title'    => AI1WMSE_PLUGIN_TITLE,
-				'about'    => AI1WMSE_PLUGIN_ABOUT,
-				'check'    => AI1WMSE_PLUGIN_CHECK,
 				'basename' => AI1WMSE_PLUGIN_BASENAME,
 				'version'  => AI1WMSE_VERSION,
 				'requires' => '3.85',
@@ -302,8 +264,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMUE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMUE_PLUGIN_KEY,
 				'title'    => AI1WMUE_PLUGIN_TITLE,
-				'about'    => AI1WMUE_PLUGIN_ABOUT,
-				'check'    => AI1WMUE_PLUGIN_CHECK,
 				'basename' => AI1WMUE_PLUGIN_BASENAME,
 				'version'  => AI1WMUE_VERSION,
 				'requires' => '2.59',
@@ -316,8 +276,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMLE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMLE_PLUGIN_KEY,
 				'title'    => AI1WMLE_PLUGIN_TITLE,
-				'about'    => AI1WMLE_PLUGIN_ABOUT,
-				'check'    => AI1WMLE_PLUGIN_CHECK,
 				'basename' => AI1WMLE_PLUGIN_BASENAME,
 				'version'  => AI1WMLE_VERSION,
 				'requires' => '2.71',
@@ -330,8 +288,6 @@ class Ai1wm_Extensions {
 			$extensions[ AI1WMWE_PLUGIN_NAME ] = array(
 				'key'      => AI1WMWE_PLUGIN_KEY,
 				'title'    => AI1WMWE_PLUGIN_TITLE,
-				'about'    => AI1WMWE_PLUGIN_ABOUT,
-				'check'    => AI1WMWE_PLUGIN_CHECK,
 				'basename' => AI1WMWE_PLUGIN_BASENAME,
 				'version'  => AI1WMWE_VERSION,
 				'requires' => '1.42',

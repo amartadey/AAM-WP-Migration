@@ -41,7 +41,6 @@ if ( defined( 'WP_CLI' ) && ! class_exists( 'Ai1wm_Backup_WP_CLI_Base' ) ) {
 				WP_CLI::error_multi_line(
 					array(
 						__( 'WordPress Multisite is supported via our All-in-One WP Migration Multisite Extension.', AI1WM_PLUGIN_NAME ),
-						__( 'You can get a copy of it here: https://webgraphicshub.com/products/multisite-extension', AI1WM_PLUGIN_NAME ),
 					)
 				);
 				exit;

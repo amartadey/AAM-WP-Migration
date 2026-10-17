@@ -1,8 +1,9 @@
 name: Build plugin zip
 
-# Every push to main rebuilds aam-wp-migration.zip.
-# - Version bump in the plugin header  -> new permanent release  vX.Y  (version history)
-# - Push without a bump                -> the current version's zip asset is replaced
+# Every push to main publishes a new release, so installed sites always see the update.
+# - Version bumped in the plugin header -> release vX.Y as written
+# - No bump (tag already exists)        -> patch auto-bumped (7.87 -> 7.87.1 -> 7.87.2),
+#                                          committed back to main, then released
 # Stable download link (never changes):
 #   https://github.com/amartadey/AAM-WP-Migration/releases/latest/download/aam-wp-migration.zip
 
@@ -38,21 +39,47 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Plugin version: $VERSION"
 
+      - name: Auto-bump patch version if already released
+        id: bump
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          NEW="$VERSION"
+          while gh release view "v$NEW" >/dev/null 2>&1; do
+            if [[ "$NEW" =~ ^([0-9]+\.[0-9]+)\.([0-9]+)$ ]]; then
+              NEW="${BASH_REMATCH[1]}.$(( BASH_REMATCH[2] + 1 ))"
+            else
+              NEW="$NEW.1"
+            fi
+          done
+
+          if [ "$NEW" != "$VERSION" ]; then
+            echo "v$VERSION already released - bumping to $NEW"
+            export VERSION NEW
+            php -r '$f="aam-wp-migration.php"; $s=file_get_contents($f); $s=preg_replace("/^(\s*\*\s*Version:\s*)".preg_quote(getenv("VERSION"),"/")."\s*$/m", "\${1}".getenv("NEW"), $s, 1, $n); if(!$n) exit(1); file_put_contents($f,$s);' || { echo "::error::Header bump failed"; exit 1; }
+            php -r '$f="constants.php"; $s=file_get_contents($f); $s=str_replace("define( \x27AI1WM_VERSION\x27, \x27".getenv("VERSION")."\x27 );", "define( \x27AI1WM_VERSION\x27, \x27".getenv("NEW")."\x27 );", $s, $n); if(!$n) exit(1); file_put_contents($f,$s);' || { echo "::error::Constant bump failed"; exit 1; }
+
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -am "Bump version to $NEW"
+            git pull --rebase origin main
+            # Pushes made with GITHUB_TOKEN do not re-trigger this workflow.
+            git push origin HEAD:main
+          fi
+
+          echo "version=$NEW" >> "$GITHUB_OUTPUT"
+
       - name: Build aam-wp-migration.zip
         run: git archive --format=zip --prefix=aam-wp-migration/ -o aam-wp-migration.zip HEAD
 
-      - name: Publish / refresh release
+      - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
-          TAG: v${{ steps.meta.outputs.version }}
+          TAG: v${{ steps.bump.outputs.version }}
         run: |
-          if gh release view "$TAG" >/dev/null 2>&1; then
-            echo "Release $TAG exists - replacing zip"
-            gh release upload "$TAG" aam-wp-migration.zip --clobber
-          else
-            echo "Creating release $TAG"
-            gh release create "$TAG" aam-wp-migration.zip \
-              --title "$TAG" \
-              --notes "Automated build from ${{ github.sha }}"
-          fi
-          gh release edit "$TAG" --latest
+          gh release create "$TAG" aam-wp-migration.zip \
+            --title "$TAG" \
+            --notes "Automated build from $(git rev-parse HEAD)" \
+            --target "$(git rev-parse HEAD)" \
+            --latest

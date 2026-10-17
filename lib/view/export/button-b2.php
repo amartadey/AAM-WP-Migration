@@ -22,4 +22,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<a href="https://webgraphicshub.com/products/backblaze-b2-extension" target="_blank">Backblaze B2</a>
+Backblaze B2
