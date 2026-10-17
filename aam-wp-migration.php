@@ -5,7 +5,7 @@
  * Description: Migration tool for all your blog data with unlimited file size support. Import or Export your blog content with a single click — no file size restrictions.
  * Author: Amarta Dey
  * Author URI: https://amartadey.com/
- * Version: 7.87
+ * Version: 7.87.1
  * Update URI: https://github.com/amartadey/AAM-WP-Migration
  * Text Domain: all-in-one-wp-migration
  * Domain Path: /languages
