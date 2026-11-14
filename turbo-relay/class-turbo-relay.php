@@ -20,7 +20,8 @@ class Aam_Turbo_Relay {
 	const SLUG   = 'aam-turbo-relay';
 
 	public static function init() {
-		add_action( 'admin_menu', array( __CLASS__, 'add_admin_menu' ) );
+		// 20: the parent menu (ai1wm_export) must exist first, or WordPress builds a broken link for this page.
+		add_action( 'admin_menu', array( __CLASS__, 'add_admin_menu' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue' ) );
 		add_action( 'wp_ajax_aam_turbo_ticket', array( __CLASS__, 'ajax_ticket' ) );
 		add_action( 'rfu_ai1wm_downloaded', array( __CLASS__, 'delete_from_relay' ) );
