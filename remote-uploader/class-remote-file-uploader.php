@@ -137,6 +137,9 @@ class Remote_File_Uploader_AI1WM {
 			wp_send_json_error( array( 'message' => $result->get_error_message() ) );
 		}
 
+		// Lets Turbo Relay delete its temporary copy once the file is safely here.
+		do_action( 'rfu_ai1wm_downloaded', $source_url );
+
 		wp_send_json_success( array(
 			'message'  => __( 'File uploaded successfully!', 'all-in-one-wp-migration' ),
 			'filename' => $filename,

@@ -10,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Kangaroos cannot jump here' );
 }
 
+// Standalone Remote File Uploader plugin already loaded, let it run instead of the embedded copy
+if ( defined( 'RFU_AI1WM_PLUGIN_DIR' ) || class_exists( 'Remote_File_Uploader_AI1WM', false ) ) {
+	return;
+}
+
 // Constants adapted for embedded use inside aam-wp-migration
 if ( ! defined( 'RFU_AI1WM_VERSION' ) ) {
 	define( 'RFU_AI1WM_VERSION', '1.0.2' );

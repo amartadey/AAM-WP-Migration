@@ -111,4 +111,8 @@ if ( ! is_multisite() ) {
 // =======================================
 if ( ! is_multisite() ) {
 	require_once AI1WM_PATH . DIRECTORY_SEPARATOR . 'remote-uploader' . DIRECTORY_SEPARATOR . 'loader.php';
+
+	// Turbo Relay Upload: its own page, reuses the Remote Uploader's downloader
+	require_once AI1WM_PATH . DIRECTORY_SEPARATOR . 'turbo-relay' . DIRECTORY_SEPARATOR . 'class-turbo-relay.php';
+	Aam_Turbo_Relay::init();
 }
