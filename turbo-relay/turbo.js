@@ -12,7 +12,7 @@
 
     const el = (id) => document.getElementById(id);
     const startButton = el('aam-turbo-start');
-    if (!startButton) return; // relay not configured yet
+    if (!startButton) return;
 
     const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
     const mb = (bytes) => (bytes / 1048576).toFixed(1) + ' MB';
@@ -38,11 +38,10 @@
     }
 
     // XHR rather than fetch: fetch cannot report upload progress.
-    function putChunk(url, ticket, blob, offset, onProgress) {
+    function putChunk(url, blob, offset, onProgress) {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open('PUT', url);
-            xhr.setRequestHeader('X-Relay-Ticket', ticket);
             xhr.setRequestHeader('X-Offset', offset);
             xhr.upload.onprogress = (e) => onProgress(e.loaded);
             xhr.onload = () => (xhr.status === 200 ? resolve() : reject({ status: xhr.status, text: xhr.responseText }));
@@ -51,7 +50,7 @@
         });
     }
 
-    async function sendToRelay(file, url, ticket) {
+    async function sendToRelay(file, url) {
         const offsets = [];
         for (let offset = 0; offset < file.size; offset += CHUNK) offsets.push(offset);
 
@@ -70,13 +69,13 @@
                 const blob = file.slice(offset, offset + CHUNK);
                 for (let attempt = 0; ; attempt++) {
                     try {
-                        await putChunk(url, ticket, blob, offset, (loaded) => { sent[offset] = loaded; report(); });
+                        await putChunk(url, blob, offset, (loaded) => { sent[offset] = loaded; report(); });
                         sent[offset] = blob.size;
                         break;
                     } catch (e) {
                         // 4xx/507 will not get better on retry; network drops and 5xx might.
                         const fatal = e.status >= 400 && e.status < 500 || e.status === 507;
-                        if (fatal || attempt >= RETRIES) throw new Error('Relay refused the upload: ' + (e.text || e.status));
+                        if (fatal || attempt >= RETRIES) throw new Error('The relay could not take the upload: ' + (e.text || 'connection lost') + '.');
                         sent[offset] = 0;
                         await sleep(2000 * (attempt + 1));
                     }
@@ -126,16 +125,16 @@
         window.onbeforeunload = () => 'Upload in progress';
 
         try {
-            const t = await ajax('aam_turbo_ticket', {});
-            if (!t.success) throw new Error(t.data.message);
+            // Random id = the private address of this upload on the relay. Nobody can guess it.
+            const id = Array.from(crypto.getRandomValues(new Uint8Array(16)), (b) => b.toString(16).padStart(2, '0')).join('');
 
             // Relay only accepts plain file names.
             const name = file.name.replace(/\.wpress$/i, '').replace(/[^A-Za-z0-9_-]/g, '-') + '.wpress';
-            await sendToRelay(file, t.data.relay + '/u/' + t.data.id + '/' + name, t.data.ticket);
+            await sendToRelay(file, aamTurbo.relay + '/u/' + id + '/' + name);
 
             el('aam-turbo-speed').textContent = '';
             progress(0, file.size, 'Step 2 of 2: this site is pulling the file from the relay…');
-            const result = await pullToSite(t.data.relay + '/f/' + t.data.id + '/' + name, file.size);
+            const result = await pullToSite(aamTurbo.relay + '/f/' + id + '/' + name, file.size);
 
             if (Number(result.size) !== file.size) {
                 throw new Error('Size mismatch: sent ' + file.size + ' bytes, site received ' + result.size + '. Delete that backup and try again.');
